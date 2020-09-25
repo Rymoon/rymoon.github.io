@@ -1,3 +1,4 @@
 Hello world!
-Hohohoho
-<https://github.com/Rymoon/rymoon.github.io/edit/master/docs/draft.htm>
+
+View the Draft here.
+<https://rymoon.github.io/Draft.htm>
