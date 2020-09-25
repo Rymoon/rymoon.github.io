@@ -5,4 +5,4 @@ layout: default
 
 # About Page
 
-Rymoon will be a great mathematician ... maybe.
+Empty Page.
