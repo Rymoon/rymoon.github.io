@@ -1,13 +1,11 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <title>环境搭建</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" />
-    <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>环境搭建 | Your awesome title</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>环境搭建 | Rymoon’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="环境搭建" />
 <meta name="author" content="rym" />
 <meta property="og:locale" content="en_US" />
@@ -15,13 +13,17 @@
 <meta property="og:description" content="环境搭建：Anaconda+pytorch+CUDA+VS Code 请先通读此手册，再逐步安装。 本文改编自CSDN,超级详细！vscode+anaconda+tensorflow2.0 搭建机器学习开发环境，有删改。" />
 <link rel="canonical" href="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html" />
 <meta property="og:url" content="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html" />
-<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:site_name" content="Rymoon’s Website" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-09-26T00:00:00+08:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html","headline":"环境搭建","datePublished":"2020-09-26T00:00:00+08:00","dateModified":"2020-09-26T00:00:00+08:00","author":{"@type":"Person","name":"rym"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html"},"description":"环境搭建：Anaconda+pytorch+CUDA+VS Code 请先通读此手册，再逐步安装。 本文改编自CSDN,超级详细！vscode+anaconda+tensorflow2.0 搭建机器学习开发环境，有删改。","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"环境搭建","dateModified":"2020-09-26T00:00:00+08:00","datePublished":"2020-09-26T00:00:00+08:00","url":"http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html"},"author":{"@type":"Person","name":"rym"},"description":"环境搭建：Anaconda+pytorch+CUDA+VS Code 请先通读此手册，再逐步安装。 本文改编自CSDN,超级详细！vscode+anaconda+tensorflow2.0 搭建机器学习开发环境，有删改。","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dd17a83aa6041f91bbab4391859093914e346939">
   </head>
   <body>
     <nav>
@@ -35,7 +37,19 @@
     <a href="/staff.html" >Staff</a>
   
 </nav>
-    <h1>环境搭建</h1>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">环境搭建</h1>
+      <h2 class="project-tagline">A humble website.</h2>
+      
+        <a href="https://github.com/Rymoon/rymoon.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1>环境搭建</h1>
 
 <p>
   26 Sep 2020
@@ -60,13 +74,13 @@
   </li>
   <li>
     <p>安装扩展插件
-<img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/bar.png" alt="side-bar" /></p>
+<img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/bar.png" alt="side-bar" /></p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-chinese.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-chinese.png" alt="side-bar" /></p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-ana.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-ana.png" alt="side-bar" /></p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-python.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-python.png" alt="side-bar" /></p>
   </li>
   <li>
     <p>安装anaconda，官方下载。或使用<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">清华镜像源</a>.</p>
@@ -74,9 +88,9 @@
   <li>
     <p>运行Anaconda Navigator，点击环境(Environments)，点击Create创建新环境。</p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-nav.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-nav.png" alt="side-bar" /></p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-nav2.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-nav2.png" alt="side-bar" /></p>
   </li>
   <li>
     <p>切换清华镜像作为下载源。<a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">使用说明</a></p>
@@ -88,7 +102,7 @@
 
 </code></pre></div>    </div>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-prompt.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-prompt.png" alt="side-bar" /></p>
 
     <p>验证安装效果。进入Python交互控制台(IDLE)，测试代码：</p>
 
@@ -97,14 +111,14 @@
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 </code></pre></div>    </div>
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/idle.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/idle.png" alt="side-bar" /></p>
   </li>
   <li>
     <p>安装<a href="https://developer.nvidia.com/cuda-downloads">CUDA</a>官网下载。记得更新N卡驱动。其中，<a href="https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&amp;targetCUDA10.2">CUDA10.2</a>，2.6GB。</p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda.png" alt="side-bar" /></p>
 
-    <p><img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda2.png" alt="side-bar" /></p>
+    <p><img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda2.png" alt="side-bar" /></p>
   </li>
   <li>
     <p>下载<a href="https://developer.nvidia.com/cudnn">cuDNN</a>，放置到指定位置。bin文件夹里面的东西放到cuda下载文件夹下面的bin文件夹里，以此类推,对于include、lib文件夹。</p>
@@ -113,13 +127,13 @@
     <p>创建环境变量。请根据实际安装位置改变。这里是Cuda安装在默认位置C:\Program Files 中的情况。</p>
 
     <p>NVCUDASAMPLES10_1_ROOT
-<img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda3.png" alt="side-bar" /></p>
+<img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda3.png" alt="side-bar" /></p>
 
     <p>Path
-<img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda4.png" alt="side-bar" /></p>
+<img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda4.png" alt="side-bar" /></p>
 
     <p>win+r，打开cmd，输入：nvcc –version查看版本，出现如下图所示的页面就算安装成功了。
-<img src="http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda5.png" alt="side-bar" /></p>
+<img src="http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda5.png" alt="side-bar" /></p>
 
     <p>在python中测试cuda是否有效，</p>
 
@@ -129,5 +143,13 @@
   </li>
 </ol>
 
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Rymoon/rymoon.github.io">rymoon.github.io</a> is maintained by <a href="https://github.com/Rymoon">Rymoon</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
   </body>
 </html>

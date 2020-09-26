@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-26T17:31:38+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">环境搭建</title><link href="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html" rel="alternate" type="text/html" title="环境搭建" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA</id><content type="html" xml:base="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html">&lt;h1 id=&quot;环境搭建anacondapytorchcudavs-code&quot;&gt;环境搭建：Anaconda+pytorch+CUDA+VS Code&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-26T17:53:17+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rymoon’s Website</title><subtitle>A humble website.</subtitle><entry><title type="html">环境搭建</title><link href="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html" rel="alternate" type="text/html" title="环境搭建" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA</id><content type="html" xml:base="http://localhost:4000/2020/09/26/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html">&lt;h1 id=&quot;环境搭建anacondapytorchcudavs-code&quot;&gt;环境搭建：Anaconda+pytorch+CUDA+VS Code&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;请先通读此手册，再逐步安装。
@@ -13,13 +13,13 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;安装扩展插件
-&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/bar.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/bar.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-chinese.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-chinese.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-ana.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-ana.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ext-python.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ext-python.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;安装anaconda，官方下载。或使用&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/&quot;&gt;清华镜像源&lt;/a&gt;.&lt;/p&gt;
@@ -27,9 +27,9 @@
   &lt;li&gt;
     &lt;p&gt;运行Anaconda Navigator，点击环境(Environments)，点击Create创建新环境。&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-nav.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-nav.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-nav2.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-nav2.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;切换清华镜像作为下载源。&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;使用说明&lt;/a&gt;&lt;/p&gt;
@@ -41,7 +41,7 @@
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/ana-prompt.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/ana-prompt.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
     &lt;p&gt;验证安装效果。进入Python交互控制台(IDLE)，测试代码：&lt;/p&gt;
 
@@ -50,14 +50,14 @@
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/idle.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/idle.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;安装&lt;a href=&quot;https://developer.nvidia.com/cuda-downloads&quot;&gt;CUDA&lt;/a&gt;官网下载。记得更新N卡驱动。其中，&lt;a href=&quot;https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&amp;amp;targetCUDA10.2&quot;&gt;CUDA10.2&lt;/a&gt;，2.6GB。&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda2.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda2.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;下载&lt;a href=&quot;https://developer.nvidia.com/cudnn&quot;&gt;cuDNN&lt;/a&gt;，放置到指定位置。bin文件夹里面的东西放到cuda下载文件夹下面的bin文件夹里，以此类推,对于include、lib文件夹。&lt;/p&gt;
@@ -66,13 +66,13 @@
     &lt;p&gt;创建环境变量。请根据实际安装位置改变。这里是Cuda安装在默认位置C:\Program Files 中的情况。&lt;/p&gt;
 
     &lt;p&gt;NVCUDASAMPLES10_1_ROOT
-&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda3.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda3.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
     &lt;p&gt;Path
-&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda4.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda4.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
     &lt;p&gt;win+r，打开cmd，输入：nvcc –version查看版本，出现如下图所示的页面就算安装成功了。
-&lt;img src=&quot;http://localhost:4000/assets/image/assets/image/2020-09-26-环境搭建/cuda5.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/image/2020-09-26-环境搭建/cuda5.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
 
     &lt;p&gt;在python中测试cuda是否有效，&lt;/p&gt;
 
@@ -1546,4 +1546,4 @@ color:#969696;direction:ltr'&gt;已使用 OneNote 创建。&lt;/p&gt;
 
 &lt;/body&gt;
 
-&lt;/html&gt;</content><author><name>rym</name></author></entry></feed>
+&lt;/html&gt;</content><author><name>rym</name></author><summary type="html"></summary></entry></feed>
