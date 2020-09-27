@@ -1,3 +1,6 @@
+---
+author: vjy
+---
 # Autograd: 自动微分
 
 PyTorch 中的所有神经网络的核心就是 `autograd`包。我们先简单浏览，然后我们将训练我们的第一个神经网络。
