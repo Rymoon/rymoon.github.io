@@ -23,4 +23,19 @@
   ````markdown
   ![xxx]({{site.url}}/assets/image/post_name/xxx.png)
   ````
+* 使用latex时请注意：
+  * $$ $$ 中的内容要包在环境里。比如：
+  
+    `$$ \lambda = 3 $$`
+    
+    是不能正常显示的。而
+    
+    ````latex
+    $$ \begin{aligned}
+    \lambda & =3 
+    \end(aligned}$$
+    ````
+    
+    才行。
+    
 
