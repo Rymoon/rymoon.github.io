@@ -16,6 +16,7 @@
   |张胜|vu|
   |张佳毅|vjy|
   |任雨濛|rym|
+* 在markdown文件中,<!-- more -->之前的内容被视为摘要。这个语句是必须有的。
 * 放到`rymoon.github.io/docs/_posts/`
 * 图片放到`rymoon.github.io/docs/assets/image/post_name/`下，其中 post_name替换成markdown文档的名字。
   在markdown中通过`{{site.url}}/assets/image/post_name/xxx.png`进行引用，比如
