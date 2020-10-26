@@ -8,6 +8,9 @@ excerpt_separator:  '<!-- more -->'
 plugins:
   - jekyll-feed
 
+kramdown:
+  math_engine: null
+
 collections:
   authors:
     output: true
