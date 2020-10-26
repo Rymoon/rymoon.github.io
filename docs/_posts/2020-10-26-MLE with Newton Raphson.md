@@ -5,10 +5,17 @@ author: stg1
 数理统计的作业，顺便也贴这，但是感觉锅很多...
 ## 问题
 $X_1,..., X_n \sim Gamma(\alpha,\lambda)$，$f(x,\alpha,\lambda)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha−1}e^{−\lambda x}$，根据样本估计参数$\alpha,\lambda$。
+
+<!-- more -->
+
 ## 公式推导
 ### 极大似然
-$$L(\alpha,\lambda)=(\frac{\lambda^\alpha}{\Gamma(\alpha)})^n\prod_{i=1}^{n}x_i^{\alpha−1}e^{−\lambda x_i}$$
-$$l(\alpha,\lambda)=n\alpha \ln \lambda - n\ln \Gamma(\alpha)+(\alpha-1)\sum_{i=1}^n\ln x_i-\lambda\sum_{i=1}^n x_i$$  
+$$
+L(\alpha,\lambda)=(\frac{\lambda^\alpha}{\Gamma(\alpha)})^n\prod_{i=1}^{n}x_i^{\alpha−1}e^{−\lambda x_i}
+$$
+$$
+l(\alpha,\lambda)=n\alpha \ln \lambda - n\ln \Gamma(\alpha)+(\alpha-1)\sum_{i=1}^n\ln x_i-\lambda\sum_{i=1}^n x_i
+$$  
 似然方程：  
 注意到$\frac{\mathrm{d}}{\mathrm{d} x}\ln \Gamma(\alpha)$即为digamma函数$\psi(\alpha)$  
 $$
