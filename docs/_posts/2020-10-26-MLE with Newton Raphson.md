@@ -11,10 +11,10 @@ $X_1,..., X_n \sim Gamma(\alpha,\lambda)$，$f(x,\alpha,\lambda)=\frac{\lambda^\
 ## 公式推导
 ### 极大似然
 $$
-L(\alpha,\lambda)=(\frac{\lambda^\alpha}{\Gamma(\alpha)})^n\prod_{i=1}^{n}x_i^{\alpha−1}e^{−\lambda x_i}
-$$
-$$
-l(\alpha,\lambda)=n\alpha \ln \lambda - n\ln \Gamma(\alpha)+(\alpha-1)\sum_{i=1}^n\ln x_i-\lambda\sum_{i=1}^n x_i
+\begin{aligned}
+L(\alpha,\lambda)&=(\frac{\lambda^\alpha}{\Gamma(\alpha)})^n\prod_{i=1}^{n}x_i^{\alpha−1}e^{−\lambda x_i}\\
+l(\alpha,\lambda)&=n\alpha \ln \lambda - n\ln \Gamma(\alpha)+(\alpha-1)\sum_{i=1}^n\ln x_i-\lambda\sum_{i=1}^n x_i
+\end{aligned}
 $$  
 似然方程：  
 注意到$\frac{\mathrm{d}}{\mathrm{d} x}\ln \Gamma(\alpha)$即为digamma函数$\psi(\alpha)$  
@@ -29,6 +29,7 @@ Gamma分布的数学期望$\mu=\frac{\alpha}{\lambda},\sigma^2=\frac{\alpha}{\la
 
 ### Newton-Raphson算法
 $$
+\begin{aligend}
 \begin{bmatrix}
 \hat{\alpha}^{(k+1)}\\
 \hat{\lambda}^{(k+1)}
@@ -41,13 +42,13 @@ $$
 \begin{bmatrix}
 \frac{\partial l}{\partial \alpha}(\hat{\alpha}^{(k)})\\
 \frac{\partial l}{\partial \lambda}(\hat{\lambda}^{(k)})
-\end{bmatrix}
-$$
-$$H=-
+\end{bmatrix}\\
+H=-
 \begin{bmatrix}
    -n\psi^{'}(\alpha) & \frac{n}{\lambda} \\
    \frac{n}{\lambda} & -\frac{n\alpha}{\lambda^2}
 \end{bmatrix}
+\end{aligned}
 $$
 ### Fisher Scoring算法
 Gamma分布是指数型分布族，$H(\hat{\theta}^{(k)})$与$x$无关，故Fisher Scoring和Newton-Raphson完全一致
