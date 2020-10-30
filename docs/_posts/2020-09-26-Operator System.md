@@ -1,5 +1,6 @@
 ---
 author: rym
+catagory: blog
 ---
 # 现代操作系统
 

@@ -1,5 +1,6 @@
 ---
 author: rym
+catagory: blog
 ---
 # 用python做数值计算
 

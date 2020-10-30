@@ -9,10 +9,12 @@ plugins:
   - jekyll-feed
 
 kramdown:
-  math_engine: null
+  math_engine: nil
 
 collections:
   authors:
+    output: true
+  catagories:
     output: true
 
 defaults:
@@ -21,6 +23,11 @@ defaults:
       type: "authors"
     values:
       layout: "author"
+  - scope:
+      path: ""
+      type: "catagories"
+    values:
+      layout: "catagory"
   - scope:
       path: ""
       type: "posts"

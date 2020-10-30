@@ -1,5 +1,6 @@
 ---
 author: vjy
+catagory: blog
 ---
 
 # Pytorch 入门

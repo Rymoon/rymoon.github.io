@@ -1,5 +1,6 @@
 ---
 author: stg1
+catagory: blog
 ---
 # 用牛顿迭代求解MLE
 数理统计的作业，顺便也贴这，但是感觉锅很多...

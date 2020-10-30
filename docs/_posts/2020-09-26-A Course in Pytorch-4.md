@@ -1,5 +1,6 @@
 ---
 author: rym
+catagory: blog
 ---
 # Pytorch 入门
 

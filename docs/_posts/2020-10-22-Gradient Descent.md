@@ -1,5 +1,6 @@
 ---
 author: stg1
+catagory: blog
 ---
 # *机器学习导论* 算法及其实现 1
 ## 作者：崔嘉珩
