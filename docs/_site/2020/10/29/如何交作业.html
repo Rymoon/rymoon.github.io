@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+     <meta charset="utf-8">
+     
+         <script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+     TeX: {
+         equationNumbers: {
+             autoNumber: "AMS"
+         }
+     },
+     tex2jax: {
+         inlineMath: [ ['$','$'] ],
+         processEscapes: true,
+     }
+ });
+ </script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+ </script>
+
+     
+
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>如何交作业 | Rymoon’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="如何交作业" />
+<meta name="author" content="rym" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="如何交作业 提交作业的注意事项。" />
+<meta property="og:description" content="如何交作业 提交作业的注意事项。" />
+<link rel="canonical" href="http://localhost:4000/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html" />
+<meta property="og:url" content="http://localhost:4000/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html" />
+<meta property="og:site_name" content="Rymoon’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-29T00:00:00+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"如何交作业","dateModified":"2020-10-29T00:00:00+08:00","datePublished":"2020-10-29T00:00:00+08:00","url":"http://localhost:4000/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html"},"author":{"@type":"Person","name":"rym"},"description":"如何交作业 提交作业的注意事项。","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=97976d4c63e2c73e0aa337c965ab7e2724cf2074">
+  </head>
+  <body>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">如何交作业</h1>
+      <h2 class="project-tagline">A humble website.</h2>
+      
+        <a href="https://github.com/Rymoon/rymoon.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1>如何交作业</h1>
+
+<p>
+  29 Oct 2020
+  
+  
+    - <a href="/authors/rym.html">任雨濛</a>
+  
+</p>
+
+<h1 id="如何交作业">如何交作业</h1>
+
+<p>提交作业的注意事项。</p>
+
+<!-- more -->
+
+<h2 id="作业提交">作业提交</h2>
+
+<h3 id="纸质作业">纸质作业</h3>
+
+<p>纸质作业在课上提交。请注明学号、姓名和第几次作业。</p>
+
+<blockquote>
+  <p>纸质作业没交，下次课补就行。尽量别拖延到下下次，那时差不多要发回来了 <code class="language-plaintext highlighter-rouge">:-P</code></p>
+</blockquote>
+
+<h3 id="程序作业">程序作业</h3>
+
+<p>程序作业发送到邮箱<code class="language-plaintext highlighter-rouge">rymoon42@outlook.com</code>，主题:<code class="language-plaintext highlighter-rouge">作业名_学号</code>。所有程序和图片在一个文件夹里（<code class="language-plaintext highlighter-rouge">作业名_学号</code>），做成压缩包上传附件。</p>
+
+<p>例子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>收件人: rymoon42@outlook.com
+主题:   最小二乘法_1510067
+附件:   最小二乘法_1510067.zip
+</code></pre></div></div>
+
+<h2 id="程序的格式要求">程序的格式要求</h2>
+
+<p>至少包含<code class="language-plaintext highlighter-rouge">main.py</code>，主要计算在这里进行。此程序不应包含打断程序运行的语句，比如等待键盘输入、显示图像等等，程序应自行结束。</p>
+
+<p>程序的输入输出使用<code class="language-plaintext highlighter-rouge">shelve</code>进行。它将python字典保存到文件（以下称“shelve字典”），字典中可以保存大多数python数据类型。详见<a href="https://docs.python.org/3.7/library/shelve.html">文档</a>. 使用<code class="language-plaintext highlighter-rouge">shelve.open(filename, flag='c', protocol=None, writeback=False)</code>保存或读取文件时，不需后缀名，shelve会自动管理。事实上，它最终会生成三个文件。</p>
+
+<p>样例程序，会创建文件<code class="language-plaintext highlighter-rouge">data.dir,data.dat,data.bak</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">shelve</span>
+<span class="n">sh</span><span class="o">=</span>  <span class="n">shelve</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'data'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">sh</span><span class="p">))</span>
+<span class="n">sh</span><span class="p">[</span><span class="s">'a list'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">sh</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">sh2</span> <span class="o">=</span> <span class="n">shelve</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'data'</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">sh2</span><span class="p">[</span><span class="s">'a list'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">sh2</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>请注意shelve.open()中关于flag,writeback两个参数的解释！</p>
+</blockquote>
+
+<p>程序的输出请使用保存在同目录下的shelve字典<code class="language-plaintext highlighter-rouge">data</code>，程序的输出请保存在shelve字典<code class="language-plaintext highlighter-rouge">result</code>中，它们结构在作业描述中会给出，请根据题目自行构建。这也将用于程序测试。</p>
+
+<p>如果需要绘图，请在<code class="language-plaintext highlighter-rouge">main.py</code>以外的程序进行。绘图结果保存为图片，名称在作业描述中给出。</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Rymoon/rymoon.github.io">rymoon.github.io</a> is maintained by <a href="https://github.com/Rymoon">Rymoon</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+  </body>
+</html>

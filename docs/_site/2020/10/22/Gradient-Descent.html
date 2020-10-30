@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+     <meta charset="utf-8">
+     
+         <script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+     TeX: {
+         equationNumbers: {
+             autoNumber: "AMS"
+         }
+     },
+     tex2jax: {
+         inlineMath: [ ['$','$'] ],
+         processEscapes: true,
+     }
+ });
+ </script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+ </script>
+
+     
+
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Gradient descent | Rymoon’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Gradient descent" />
+<meta name="author" content="stg1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="机器学习导论 算法及其实现 1 作者：崔嘉珩 在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。" />
+<meta property="og:description" content="机器学习导论 算法及其实现 1 作者：崔嘉珩 在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。" />
+<link rel="canonical" href="http://localhost:4000/2020/10/22/Gradient-Descent.html" />
+<meta property="og:url" content="http://localhost:4000/2020/10/22/Gradient-Descent.html" />
+<meta property="og:site_name" content="Rymoon’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-22T00:00:00+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Gradient descent","dateModified":"2020-10-22T00:00:00+08:00","datePublished":"2020-10-22T00:00:00+08:00","url":"http://localhost:4000/2020/10/22/Gradient-Descent.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/10/22/Gradient-Descent.html"},"author":{"@type":"Person","name":"stg1"},"description":"机器学习导论 算法及其实现 1 作者：崔嘉珩 在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=97976d4c63e2c73e0aa337c965ab7e2724cf2074">
+  </head>
+  <body>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Gradient descent</h1>
+      <h2 class="project-tagline">A humble website.</h2>
+      
+        <a href="https://github.com/Rymoon/rymoon.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1>Gradient descent</h1>
+
+<p>
+  22 Oct 2020
+  
+  
+    - <a href="/authors/stg1.html">吕之豪 崔嘉珩 肖韵竹 戴文娇</a>
+  
+</p>
+
+<h1 id="机器学习导论-算法及其实现-1"><em>机器学习导论</em> 算法及其实现 1</h1>
+<h2 id="作者崔嘉珩">作者：崔嘉珩</h2>
+<blockquote>
+  <p>在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。
+<!-- more --></p>
+</blockquote>
+
+<h2 id="1梯度下降法">1.梯度下降法</h2>
+<h3 id="1-基本思想">(1) 基本思想</h3>
+<p>梯度下降法是一种一阶最优化算法，用来寻找一个可微函数的局部最小值.</p>
+
+<p>我们想要解决如下的最优化问题：
+\[ \mathop{\min}\limits_{x \in R^n} f(x) \]</p>
+
+<p>令$f(x)$为一可微函数，$ x^{*} $是$f(x)$的局部最小值点.</p>
+
+<p>我们选择一个起始点$x_0$并用下面的迭代公式来进行迭代:
+\(x_{k+1} = x_k + step_k p_k, k = 0,1,2,...\)</p>
+
+<p>其中$step_k$是第$k$步的步长（也称为学习率），$p_k$是第$k$步的下降方向.</p>
+
+<p>由于$f(x)$ 在$x_k$点沿<strong>梯度的负方向</strong> $-\nabla f(x_k)$使函数值下降最快，我们令第$k$步的下降方向$p_k = -\nabla f(x_k)$.</p>
+
+<p>之后我们可以通过线性搜索来解出$step_k$，即$step_k = \mathop{\arg\min}\limits_{step_k \ge 0} f(x_k + step_k p_k)$. 我们也可以选择用固定的步长，步长的选择一般因问题而定.</p>
+
+<p>注意到如果$f(x)$是凸函数（指下凸），那么极小值点只有一个,即$x^{ * }$，其也是全局最小值点. 则我们用梯度下降得到的极小值点就是 $x^{ * }$（若不考虑算法带来的误差）.</p>
+<h3 id="2-二次函数情况">(2) 二次函数情况</h3>
+<p>若$f(x)$是正定二次函数, 即
+\(f(x) = \frac{1}{2}x^T A x + b^T x + c, A \gt 0\)</p>
+
+<p>其中$A \gt 0$指$A$是${n \times n}$正定矩阵，$x$是一个${n \times 1}$向量，则$f(x)$在$R^{n \times 1}$上是凸函数.</p>
+
+<p>令$g_k = \nabla f(x_k) = Ax_k + b$，则下降方向$p_k = -g_k$，此时迭代公式为$x_{k+1} = x_k - step_k g_k$.</p>
+
+<p>此时我们可以推导$step_k$的显式表示：$step_k$会让$f(x)$在$g_k$方向上达到最小，则$step_k$应该能使$\phi(\alpha) = f(x_k - \alpha g_k)$达到最小值.</p>
+
+<p>我们有$\phi’(\alpha) = ((x_k - \alpha g_k)^T A + b^T) (-g_k) $和$\phi’(step_k) = 0$，则能求出$step_k = \frac{g_k^T g_k}{g_k^T A g_k}$.</p>
+
+<p>此时我们可以得到最终的迭代公式：\(x_{k+1} = x_k - \frac{g_k^T g_k}{g_k^T A g_k} g_k, g_k = Ax_k + b\)</p>
+
+<h3 id="3-算法">(3) 算法</h3>
+<p>输入：目标函数$f(x)$，梯度函数$g(x) = \nabla f(x)$，精度$\epsilon$，起始点$x_0 \in R^{n \times 1}$，最大循环次数$k_{max}$.</p>
+
+<p>输出：$f(x)$的一个极小值点$x^{*}$.</p>
+
+<p>第一步：载入$x_0$，并令$k = 0$.</p>
+
+<p>第二步：计算$f(x_k)$</p>
+
+<p>第三步：计算$g_k = g(x_k)$，若$\parallel g_k\parallel \lt \epsilon$，停止循环并令$x^* = x_k$；否则，令$p_k = -g_k$并计算$step_k = \mathop{\arg\min}\limits_{step_k \ge 0} f(x_k + step_k p_k)$.</p>
+
+<p><strong>注：在本章中，$\parallel \parallel$指的是$L^2$范数.</strong></p>
+
+<p>第四步：令$x_{k+1} = x_k + step_k p_k$，计算$f(x_{k+1})$.</p>
+
+<p>第五步：若$\parallel f(x_{k+1}) - f(x_{k})\parallel \lt \epsilon$或$\parallel x_{k+1} - x_{k}\parallel \lt \epsilon$，停止循环，并令$x^* = x_{k+1}$；否则，令$k = k+1$，<strong>回到第三步</strong>.</p>
+
+<p>第六步：若$k = k_{max}$，循环不收敛，则输出”循环不收敛，计算失败.”.</p>
+
+<h3 id="4-代码">(4) 代码</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>一般情况下，解$step_k$很麻烦. 我们讨论两种简单情况：固定的学习率和二次函数情况.</p>
+
+<p>&lt;1&gt; 用户事先给出给定的学习率$\eta$，则$step_k = \eta, k=0,1,2,…$：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gradient_descent_fixed_eta</span><span class="p">(</span><span class="n">f_x</span><span class="p">,</span> <span class="n">g_x</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span><span class="c1">#range(n) 会输出如下序列：0, 1, ..., n-1
+</span>        <span class="n">g_k</span> <span class="o">=</span> <span class="n">g_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span><span class="c1">#np.linalg.norm(g_k)是g_k的L2范数
+</span>            <span class="k">return</span> <span class="p">(</span><span class="n">x_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p_k</span> <span class="o">=</span> <span class="o">-</span> <span class="n">g_k</span>
+            <span class="n">x_k_new</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">p_k</span>
+            
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">f_x</span><span class="p">(</span><span class="n">x_k_new</span><span class="p">)</span> <span class="o">-</span> <span class="n">f_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k_new</span> <span class="o">-</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">x_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_k_new</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="o">==</span><span class="n">k_max</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s">"循环不收敛，计算失败."</span>
+</code></pre></div></div>
+
+<p>&lt;2&gt; 二次函数情况，此时用户应给出$A$：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gradient_descent_quadratic</span><span class="p">(</span><span class="n">f_x</span><span class="p">,</span> <span class="n">g_x</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">g_k</span> <span class="o">=</span> <span class="n">g_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step_k</span> <span class="o">=</span> <span class="n">g_k</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span><span class="o">/</span><span class="n">g_k</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span><span class="c1">#.T 指矩阵转置， .dot() 指矩阵乘法
+</span>            <span class="n">x_k_new</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">-</span> <span class="n">step_k</span> <span class="o">*</span> <span class="n">g_k</span>
+            
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">f_x</span><span class="p">(</span><span class="n">x_k_new</span><span class="p">)</span> <span class="o">-</span> <span class="n">f_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k_new</span> <span class="o">-</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">x_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_k_new</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="o">==</span><span class="n">k_max</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s">"循环不收敛，计算失败."</span>
+</code></pre></div></div>
+
+<p>我们来给出一个简单的例子：令$f(x_1, x_2) = x_1^2 + 4x_2^2$. 明显$f(x)$是凸函数，且唯一的极小值点是$(0,0)$.</p>
+
+<p>我们将$f(x_1, x_2)$变为矩阵形式：$f(x) = \frac{1}{2}x^T Ax$，其中$x = (x_1,x_2)^T, A = \left[\begin{matrix} 2 &amp; 0\ 0 &amp; 8\ \end{matrix}\right] $. 则$g(x) = \nabla f(x) = Ax$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">f_test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">g_test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">gradient_descent_fixed_eta</span><span class="p">(</span><span class="n">f_test</span><span class="p">,</span> <span class="n">g_test</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gradient_descent_quadratic</span><span class="p">(</span><span class="n">f_test</span><span class="p">,</span> <span class="n">g_test</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([3.77789319e-03, 3.35544320e-18]), 24)
+(array([ 1.00365696e-03, -6.27285599e-05]), 6)
+</code></pre></div></div>
+
+<p>我们可以看到，若$f(x)$是二次函数，最好用$step_k$的显式公式. 用了$step_k$显式公式的循环次数是6，使用固定学习率的则是24.</p>
+
+<h3 id="5-在机器学习中可以用梯度下降来做什么">(5) 在机器学习中，可以用梯度下降来做什么？</h3>
+
+<p>在机器学习任务中，我们有训练集$S = {(x_1,y_1),(x_2,y_2),…,(x_n,y_n)}$，其中$x_i \in R^{p \times 1} ,y_i \in R$，还有一个模型，其中的参数向量为$\theta = (\theta_1, \theta_2, … ,\theta_p)^T \in R^{p \times 1}$. 我们训练的目标是最小化损失函数$L(\theta) = \frac{1}{n}\sum_{i=1}^{n}L(f(x_i,\theta),y_i)$.</p>
+
+<p>假设我们想训练一个线性模型，并用MSE作为我们的损失函数：
+\(\begin{aligned} MSE(\theta) = \frac{1}{n} \parallel X \theta - y\parallel^2= \frac{1}{n}\sum_{i=1}^{n}(\theta^T x_i - y_i)^2
+\end{aligned}\)</p>
+
+<p>其中$X = (x_1, x_2, …, x_n)^T \in R^{n \times p}, y = (y_1, y_2, …, y_n)^T \in R^{n \times 1}$.</p>
+
+<p>如果我们想用梯度下降来最小化MSE，我们要先计算它的梯度：
+\(\nabla MSE(\theta) = \frac{2}{n} X^T(X\theta-y)\)</p>
+
+<p>则迭代公式为$\theta_{k+1} = \theta_k - step_k \nabla MSE(\theta)$.</p>
+
+<p>我们可以利用python代码来找到使模型最优的$\theta$. 我们使用一个用户给定的学习率$\eta$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">MSE</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">MSE_gradient</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="n">X</span><span class="o">^</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MSE_gradient_descent_fixed_eta</span><span class="p">(</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+    <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">g_k</span> <span class="o">=</span> <span class="n">MSE_gradient</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">theta_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">theta_k_new</span> <span class="o">=</span> <span class="n">theta_k</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">g_k</span>
+            
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">MSE</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta_k_new</span> <span class="o">-</span> <span class="n">theta_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_k_new</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="o">==</span><span class="n">k_max</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s">"循环不收敛，计算失败."</span>
+</code></pre></div></div>
+
+<h2 id="2共轭梯度下降">2.共轭梯度下降</h2>
+<h3 id="1-二次函数">(1) 二次函数</h3>
+<p>当$x_k$贴近$x^*$时，尤其是当$f(x)$较为复杂时，收敛速度将会越来越慢. 此时共轭梯度下降将会表现得比梯度下降要好.</p>
+
+<p>共轭的定义：令$A$为一个正定矩阵，$Q_1$和$Q_2$是两个非零向量，则$Q_1$和$Q_2$关于$A$共轭，若$Q_1^T A Q_2 = 0$.</p>
+
+<p>我们继续考虑二次函数的情况：\(\begin{aligned} \mathop{\min}\limits_{x \in R^n} f(x) = \mathop{\min}\limits_{x \in R^n}\frac{1}{2}x^T A x + b^T x + c, A \gt 0 \end{aligned}\)</p>
+
+<p>现在的迭代公式为$x_{k+1} = x_k + \alpha_k p_k$.</p>
+
+<p>梯度下降中$p_{k+1} = -\nabla f(x_{k+1})$，现在我们利用$step_k$和$p_k$来修正 $p_{k+1}$：
+\(\begin{aligned} p_{k+1} =  -\nabla f(x_{k+1}) + step_k p_k, p_0 = -\nabla f(x_0) \end{aligned}\)</p>
+
+<p>令$p_{k+1}$和$p_k$共轭，则$0 = p_{k+1}^T A p_k = -\nabla f(x_{k+1})A p_k + step_k p_k^TA p_k$. 则可以算出$step_k = \frac{-\nabla f(x_{k+1})^T A p_k}{p_k^TA p_k}$.</p>
+
+<p>利用线性搜索，我们可以得到$\alpha_k = \frac{p_k^T(-b-Ax_k)}{p_k^T A p_k}$.</p>
+
+<p>最终，每次迭代我们都先要更新$p_k = - \nabla f(x_k) - \frac{\nabla f(x_{k})^T A p_{k-1}}{p_{k-1}^TA p_{k-1}}p_{k-1}$. 再用已经更新的$p_k$计算$\alpha_k = \frac{p_k^T(-b-Ax_k)}{p_k^T A p_k}$. 最终$x_{k+1} = x_k + \alpha_k p_k$.</p>
+
+<h3 id="2-算法">(2) 算法</h3>
+<p>输入：目标函数$f(x)$，梯度函数$g(x) = \nabla f(x)$，精度$\epsilon$，起始点$x_0 \in R^{n \times 1}$，在$f(x)$中出现的正定阵$A \in R^{n \times n}$和$b \in R^{n \times 1}$，最大迭代次数$k_{max}$.</p>
+
+<p>输出：$f(x)$的一个极小值点$x^{*}$.</p>
+
+<p>第一步：载入$x_0$，并令$k = 0$.</p>
+
+<p>第二步：计算$f(x_k)$</p>
+
+<p>第三步：计算$g_k = g(x_k)$，若$\parallel g_k\parallel \lt \epsilon$，停止循环并令$x^* = x_k$；否则，若$k = 0$，令$p_k = -g_k$，若$k &gt; 0$, 则令$p_k = -g_k  - \frac{g_k^T A p_{k-1}}{p_{k-1}^TA p_{k-1}}p_{k-1}$并计算$\alpha_k = \frac{p_k^T(-b-Ax_k)}{p_k^T A p_k}$.</p>
+
+<p>第四步：令$x_{k+1} = x_k + step_k p_k$，计算$f(x_{k+1})$.</p>
+
+<p>第五步：若$\parallel f(x_{k+1}) - f(x_{k})\parallel \lt \epsilon$或$\parallel x_{k+1} - x_{k}\parallel \lt \epsilon$，停止循环，并令$x^* = x_{k+1}$；否则，令$k = k+1$，<strong>回到第三步</strong>.</p>
+
+<p>第六步：若$k = k_{max}$，循环不收敛，则输出”循环不收敛，计算失败.”.</p>
+
+<h3 id="3-code">(3) Code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">conjugate_gradient_descent_quadratic</span><span class="p">(</span><span class="n">f_x</span><span class="p">,</span> <span class="n">g_x</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">p_k_old</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">x_0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">g_k</span> <span class="o">=</span> <span class="n">g_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+            
+        <span class="k">elif</span><span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">p_k</span> <span class="o">=</span> <span class="o">-</span><span class="n">g_k</span>
+            
+        <span class="k">elif</span><span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">p_k</span> <span class="o">=</span> <span class="o">-</span><span class="n">g_k</span> <span class="o">-</span> <span class="n">g_k</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">p_k_old</span><span class="p">)</span><span class="o">/</span><span class="n">p_k_old</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">p_k_old</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_k_old</span>
+            
+        <span class="n">alpha_k</span> <span class="o">=</span> <span class="n">p_k</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span><span class="o">/</span><span class="n">p_k</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">p_k</span><span class="p">)</span>
+        <span class="n">x_k_new</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">+</span> <span class="n">alpha_k</span> <span class="o">*</span> <span class="n">p_k</span>
+            
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">f_x</span><span class="p">(</span><span class="n">x_k_new</span><span class="p">)</span> <span class="o">-</span> <span class="n">f_x</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k_new</span> <span class="o">-</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+                
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_k_new</span>
+            <span class="n">p_k_old</span> <span class="o">=</span> <span class="n">p_k</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="o">==</span><span class="n">k_max</span><span class="p">):</span>
+                <span class="k">return</span> <span class="s">"循环不收敛，计算失败."</span>
+</code></pre></div></div>
+
+<p>我们给出一个简单的例子：$f(x_1, x_2) = x_1^2 - 2x_1 + 4x_2^2 - 16x_2$. 则明显$f(x)$是凸函数，最小值点是$(1,2)$.</p>
+
+<p>将$f(x_1, x_2)$写成矩阵形式：$f(x) = \frac{1}{2}x^T Ax + b^Tx$，其中$x = (x_1,x_2)^T, A = \left[\begin{matrix} 2 &amp; 0\ 0 &amp; 8\ \end{matrix}\right], b = (-2, -16)^T $. 则$g(x) = \nabla f(x) = Ax + b$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">16</span><span class="p">])</span>
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">f_test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">g_test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">conjugate_gradient_descent_quadratic</span><span class="p">(</span><span class="n">f_test</span><span class="p">,</span> <span class="n">g_test</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([0.99859738, 1.99989539]), 10)
+</code></pre></div></div>
+
+<h2 id="3随机梯度下降">3.随机梯度下降</h2>
+<h3 id="1-基本思想-1">(1) 基本思想</h3>
+<p>在第一部分计算损失函数值时，我们用到了所有的样本$x_1, x_2, …, x_n$. 因此，当$n$非常大时，计算损失函数值和梯度将会非常麻烦.</p>
+
+<p>现在，我们介绍随机梯度下降法，该方法仅使用一个随机样本来计算损失函数及其梯度. 当处理巨大的训练集时，这将使算法更快；并且随机梯度下降可能使迭代跳出局部最小值的邻域，并找到全局最小值. 但是，当最终接近最小值时，迭代结果将上下浮动，因此我们永远找不到最佳参数，而只能找到一个较好的参数.</p>
+
+<p>我们继续考虑MSE情况，每次循环我们都从$X$中随机抽取一个$x_i$，并从$y$中找到其对应的$y_i$，然后放入如下的公式中：</p>
+
+\[MSE(\theta | x_i, y_i) = (\theta^T x_i - y_i)^2\]
+
+<p>我们可以计算出梯度：</p>
+
+\[\nabla MSE(\theta | x_i, y_i) = 2(x_i^T\theta-y_i) x_i .\]
+
+<p>现在迭代公式为$\theta_{k+1} = \theta_k - step_k \nabla MSE(\theta | x_i, y_i)$. 这里我们使用一个简单的学习计划：$step_k = \frac{5}{n+k+50}$, 这会让步长越来越短，并且抑制$\theta$来回波动.</p>
+<h3 id="2-代码">(2) 代码</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">MSE_one_sample</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span><span class="o">-</span><span class="n">y_i</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">MSE_gradient_one_sample</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_i</span><span class="o">^</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">-</span><span class="n">y_i</span><span class="p">)</span> <span class="o">*</span> <span class="n">x_i</span>
+
+<span class="k">def</span> <span class="nf">learning_schedule</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">5</span><span class="o">/</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MSE_stochastic_gradient_descent</span><span class="p">(</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+    <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="c1">#randint(1, n+1) 会从{1,2,...,n}中随机选出一个整数
+</span>        <span class="n">g_k</span> <span class="o">=</span> <span class="n">MSE_gradient_one_sample</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">theta_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">eta</span> <span class="o">=</span> <span class="n">learning_schedule</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+            <span class="n">theta_k_new</span> <span class="o">=</span> <span class="n">theta_k</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">g_k</span>
+            
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">MSE_one_sample</span><span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">MSE_one_sample</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta_k_new</span> <span class="o">-</span> <span class="n">theta_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_k_new</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="o">==</span><span class="n">k_max</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s">"循环不收敛，计算失败."</span>
+</code></pre></div></div>
+
+<h2 id="4小批量随机梯度下降">4.小批量随机梯度下降</h2>
+<h3 id="1-基本思想-2">(1) 基本思想</h3>
+<p>如果我们每次使用小批样本来计算损失函数，而不是一个样本或所有样本，则可以组合梯度下降和随机梯度下降的优势。</p>
+
+<p>我们继续考虑MSE情况，每次循环我们都从$X$中随机抽取$m$个$x_i$（记为$x_{i_1},…,x_{i_m}$），并从$y$中找到其对应的$y_i$（记为$y_{i_1},…,y_{i_m}$）. 通常情况下，我们每“波”都要做$m$次迭代，并做$n_epoch$“波”.</p>
+
+<p>令$X_b = (x_{i_1},…,x_{i_m})^T \in R^{m \times p}, y_b = (y_{i_1},…,y_{i_m})^T \in R^{m \times 1}$把它们输入到如下的公式中：</p>
+
+\[\begin{aligned}MSE(\theta | X_b, y_b) = \frac{1}{m} \parallel X_b \theta - y_b\parallel^2= \frac{1}{m}\sum_{k=1}^{m}(\theta^T x_{i_k} - y_{i_k})^2 \end{aligned}\]
+
+<p>此时梯度为</p>
+
+\[\nabla MSE(\theta | X_b, y_b) = \frac{2}{m} X_b^T(X_b\theta-y_b) .\]
+
+<p>迭代公式为$\theta_{k+1} = \theta_k - step_k \nabla MSE(\theta | X_b, y_b)$. 注意：我们要把当前波数$epoch$也加入到学习计划中： $step_k = \frac{5}{epoch * n+k+50}$.</p>
+<h3 id="2-代码-1">(2) 代码</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_m_samples_from_n</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span><span class="p">(</span><span class="s">"Invalid batch size!"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)])</span><span class="c1"># This would produce m random integer from{1,2,...,n}
+</span>        <span class="k">return</span> <span class="n">L</span>
+    
+<span class="c1"># 我们使用第一部分中提到的MSE函数和其梯度.
+# def MSE(theta, X, y):
+#     n = X.shape[0]
+#     return 1/n * np.linalg.norm(X.dot(theta)-y)^2
+</span>
+<span class="c1"># def MSE_gradient(theta, X, y):
+#     n = X.shape[0]
+#     return 2/n * X^T.dot(X.dot(theta)-y)
+</span>
+<span class="c1"># 我们使用和第三部分相同的学习计划函数.
+# def learning_schedule(t):
+#    return 5/(t + 50)
+</span>
+<span class="k">def</span> <span class="nf">MSE_mini_batch_stochastic_gradient_descent</span><span class="p">(</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">n_epoch</span><span class="p">):</span>
+    <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">n_epoch</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">L</span> <span class="o">=</span> <span class="n">draw_m_samples_from_n</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+            <span class="n">g_k</span> <span class="o">=</span> <span class="n">MSE_gradient</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="n">L</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">L</span><span class="p">])</span>
+        
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">theta_k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                <span class="k">break</span>
+        
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">eta</span> <span class="o">=</span> <span class="n">learning_schedule</span><span class="p">(</span><span class="n">l</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+                <span class="n">theta_k_new</span> <span class="o">=</span> <span class="n">theta_k</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">g_k</span>
+            
+                <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">MSE</span><span class="p">(</span><span class="n">theta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta_k_new</span> <span class="o">-</span> <span class="n">theta_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="n">theta_k_new</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+                    <span class="k">break</span>
+                
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">theta_k</span> <span class="o">=</span> <span class="n">theta_k_new</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">l</span> <span class="o">==</span> <span class="n">n_epoch</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">theta_k</span>
+</code></pre></div></div>
+
+<h2 id="参考资料">参考资料：</h2>
+
+<p>1.统计学习方法（第2版）- 李航</p>
+
+<p>2.机器学习 - 周志华</p>
+
+<p>3.Hands-on Machine Learning with Scikit-Learn, Keras &amp; TensorFlow, 2nd Edition - Aurélien Géron</p>
+
+<p>4.Conjugate gradient method - Wikipedia</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Rymoon/rymoon.github.io">rymoon.github.io</a> is maintained by <a href="https://github.com/Rymoon">Rymoon</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+  </body>
+</html>
