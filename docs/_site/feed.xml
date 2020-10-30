@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-30T11:42:40+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rymoon’s Website</title><subtitle>A humble website.</subtitle><entry><title type="html">作业1</title><link href="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html" rel="alternate" type="text/html" title="作业1" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1</id><content type="html" xml:base="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html">&lt;h1 id=&quot;作业1&quot;&gt;作业1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-30T11:48:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rymoon’s Website</title><subtitle>A humble website.</subtitle><entry><title type="html">作业1</title><link href="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html" rel="alternate" type="text/html" title="作业1" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1</id><content type="html" xml:base="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html">&lt;h1 id=&quot;作业1&quot;&gt;作业1&lt;/h1&gt;
 
 &lt;p&gt;第一次作业。&lt;/p&gt;
 
@@ -359,7 +359,7 @@ H=-
   &lt;li&gt;
     &lt;p&gt;使用latex时请注意，markdown解析先于latex，所以可能会干扰。把代码包含在&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-10-26-如何上传文档/rawtag.png&quot; alt=&quot;side-bar&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/image/2020-10-26-如何上传文档/rawtag.png&quot; alt=&quot;rawtag&quot; /&gt;&lt;/p&gt;
 
     &lt;p&gt;中可以彻底解决问题。&lt;/p&gt;
 
