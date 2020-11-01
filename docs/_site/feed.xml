@@ -1,20 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-30T11:48:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rymoon’s Website</title><subtitle>A humble website.</subtitle><entry><title type="html">作业1</title><link href="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html" rel="alternate" type="text/html" title="作业1" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1</id><content type="html" xml:base="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html">&lt;h1 id=&quot;作业1&quot;&gt;作业1&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-01T15:23:06+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rymoon’s Website</title><subtitle>A humble website.</subtitle><entry><title type="html">作业1</title><link href="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html" rel="alternate" type="text/html" title="作业1" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1</id><content type="html" xml:base="http://localhost:4000/2020/10/29/%E4%BD%9C%E4%B8%9A1.html">&lt;h1 id=&quot;作业1&quot;&gt;作业1&lt;/h1&gt;
 
 &lt;p&gt;第一次作业。&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;这次作业发的有点晚，非常抱歉！下次课前不能及时完成的请在下下次课补交。
-有任何问题请在微信群里说，我是“助教-任雨濛”。
-&lt;a href=&quot;/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html&quot;&gt;如何交作业&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;这次作业发的有点晚，非常抱歉！下次课前不能及时完成的请在下下次课补交。&lt;br /&gt;
+有任何问题请在微信群里说，我是“助教-任雨濛”。&lt;br /&gt;
+&lt;a href=&quot;/2020/10/29/%E5%A6%82%E4%BD%95%E4%BA%A4%E4%BD%9C%E4%B8%9A.html&quot;&gt;如何交作业&lt;/a&gt;&lt;br /&gt;
+作业来自教材&lt;a href=&quot;https://item.jd.com/12695228.html&quot;&gt;《机器学习及其应用》&lt;/a&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;纸上作业&quot;&gt;纸上作业&lt;/h2&gt;
 
-&lt;p&gt;p31,1.4.14  卡方检验&lt;/p&gt;
+&lt;h3 id=&quot;卡方检验&quot;&gt;卡方检验&lt;/h3&gt;
 
-&lt;p&gt;p61,2.5.2   极大似然估计&lt;/p&gt;
+&lt;p&gt;p31,1.4.14&lt;/p&gt;
+
+&lt;p&gt;要确定某基因 X 与某疾病y 之间是否存在联系，现对260人进行检查，得到体内是否有该基因与是否换病之间的关系如表1-11所示，若χ² 统计量阈值设为7.2，X=0表示体内不含该基因，X=1表示体内含有该基因,y=-1表示不患病，y=+1表示患病。试根据表中数据确定该基因是否与该疾病存在某种联系。&lt;/p&gt;
+
+&lt;p&gt;表1-11&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;y=-1&lt;/th&gt;
+      &lt;th&gt;y=+1&lt;/th&gt;
+      &lt;th&gt;合计&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X=0&lt;/td&gt;
+      &lt;td&gt;99&lt;/td&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;152&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X=1&lt;/td&gt;
+      &lt;td&gt;41&lt;/td&gt;
+      &lt;td&gt;67&lt;/td&gt;
+      &lt;td&gt;108&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;合计&lt;/td&gt;
+      &lt;td&gt;140&lt;/td&gt;
+      &lt;td&gt;120&lt;/td&gt;
+      &lt;td&gt;260&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;书上的例子似乎有点问题，可以看看这个&lt;a href=&quot;https://support.minitab.com/zh-cn/minitab/20/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/interpret-the-results/all-statistics/&quot;&gt;解释相关性的卡方检验的所有统计量&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;极大似然估计&quot;&gt;极大似然估计&lt;/h3&gt;
+
+&lt;p&gt;p61,2.5.2&lt;/p&gt;
+
+&lt;p&gt;假设男子身高服从正态分布$N(\mu,\sigma^2)$，有数据如下，用极大似然法估计$\mu,\sigma^2$。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;序号&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;th&gt;8&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;身高&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+      &lt;td&gt;175&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;169&lt;/td&gt;
+      &lt;td&gt;174&lt;/td&gt;
+      &lt;td&gt;187&lt;/td&gt;
+      &lt;td&gt;168&lt;/td&gt;
+      &lt;td&gt;176&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h2 id=&quot;程序作业&quot;&gt;程序作业&lt;/h2&gt;
 
@@ -96,16 +171,25 @@ X^0=(x_1,x_2)^T
 
 &lt;h3 id=&quot;程序作业&quot;&gt;程序作业&lt;/h3&gt;
 
-&lt;p&gt;程序作业发送到邮箱&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rymoon42@outlook.com&lt;/code&gt;，主题:&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;作业名_学号&lt;/code&gt;。所有程序和图片在一个文件夹里（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;作业名_学号&lt;/code&gt;），做成压缩包上传附件。&lt;/p&gt;
+&lt;p&gt;程序作业发送到邮箱&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rymoon42@outlook.com&lt;/code&gt;，主题:&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;作业名_学号&lt;/code&gt;。所有程序和图片在一个文件夹里（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;作业名_学号&lt;/code&gt;），做成压缩包上传附件。如果一次作业有多个程序，分别打包。&lt;/p&gt;
 
-&lt;p&gt;例子：&lt;/p&gt;
+&lt;p&gt;比如第一次作业：&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;收件人: rymoon42@outlook.com
 主题:   最小二乘法_1510067
 附件:   最小二乘法_1510067.zip
+
+收件人: rymoon42@outlook.com
+主题:   梯度下降法_1510067
+附件:   梯度下降法_1510067.zip
+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;如果你在一封信发了，只要压缩包名字对就行，主题随意，毕竟这个邮箱就是用来收作业的。当然，你分开邮件发我做记录方便一点。&lt;/p&gt;
+
 &lt;h2 id=&quot;程序的格式要求&quot;&gt;程序的格式要求&lt;/h2&gt;
+
+&lt;p&gt;一个完整的例子&lt;a href=&quot;http://localhost:4000/assets/files/最小二乘法_1510067.zip&quot;&gt;最小二乘法_1510067.zip&lt;/a&gt;，如果需要，可以复用其中的util.py，它包装了shelve模块的输入输出功能。&lt;/p&gt;
 
 &lt;p&gt;至少包含&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt;，主要计算在这里进行。此程序不应包含打断程序运行的语句，比如等待键盘输入、显示图像等等，程序应自行结束。&lt;/p&gt;
 
@@ -132,7 +216,15 @@ X^0=(x_1,x_2)^T
 
 &lt;p&gt;程序的输出请使用保存在同目录下的shelve字典&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt;，程序的输出请保存在shelve字典&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;result&lt;/code&gt;中，它们结构在作业描述中会给出，请根据题目自行构建。这也将用于程序测试。&lt;/p&gt;
 
-&lt;p&gt;如果需要绘图，请在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt;以外的程序进行。绘图结果保存为图片，名称在作业描述中给出。&lt;/p&gt;</content><author><name>rym</name></author><summary type="html">如何交作业 提交作业的注意事项。</summary></entry><entry><title type="html">Mle with newton raphson</title><link href="http://localhost:4000/2020/10/26/MLE-with-Newton-Raphson.html" rel="alternate" type="text/html" title="Mle with newton raphson" /><published>2020-10-26T00:00:00+08:00</published><updated>2020-10-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/26/MLE%20with%20Newton%20Raphson</id><content type="html" xml:base="http://localhost:4000/2020/10/26/MLE-with-Newton-Raphson.html">&lt;h1 id=&quot;用牛顿迭代求解mle&quot;&gt;用牛顿迭代求解MLE&lt;/h1&gt;
+&lt;p&gt;如果需要绘图，请在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt;以外的程序进行。绘图结果保存为图片，名称在作业描述中给出。&lt;/p&gt;</content><author><name>rym</name></author><summary type="html">如何交作业 提交作业的注意事项。</summary></entry><entry><title type="html">关于教材</title><link href="http://localhost:4000/2020/10/29/%E5%85%B3%E4%BA%8E%E6%95%99%E6%9D%90.html" rel="alternate" type="text/html" title="关于教材" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/29/%E5%85%B3%E4%BA%8E%E6%95%99%E6%9D%90</id><content type="html" xml:base="http://localhost:4000/2020/10/29/%E5%85%B3%E4%BA%8E%E6%95%99%E6%9D%90.html">&lt;h2 id=&quot;机器学习及其应用&quot;&gt;《机器学习及其应用》&lt;/h2&gt;
+
+&lt;p&gt;汪荣桂&lt;/p&gt;
+
+&lt;p&gt;机械工业出版社&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://item.jd.com/12695228.html&quot;&gt;京东&lt;/a&gt;&lt;/p&gt;</content><author><name>rym</name></author><summary type="html">《机器学习及其应用》 汪荣桂 机械工业出版社</summary></entry><entry><title type="html">Mle with newton raphson</title><link href="http://localhost:4000/2020/10/26/MLE-with-Newton-Raphson.html" rel="alternate" type="text/html" title="Mle with newton raphson" /><published>2020-10-26T00:00:00+08:00</published><updated>2020-10-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/10/26/MLE%20with%20Newton%20Raphson</id><content type="html" xml:base="http://localhost:4000/2020/10/26/MLE-with-Newton-Raphson.html">&lt;h1 id=&quot;用牛顿迭代求解mle&quot;&gt;用牛顿迭代求解MLE&lt;/h1&gt;
 &lt;p&gt;数理统计的作业，顺便也贴这，但是感觉锅很多…&lt;/p&gt;
 &lt;h2 id=&quot;问题&quot;&gt;问题&lt;/h2&gt;
 &lt;p&gt;$X_1,…, X_n \sim Gamma(\alpha,\lambda)$，$f(x,\alpha,\lambda)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha−1}e^{−\lambda x}$，根据样本估计参数$\alpha,\lambda$。&lt;/p&gt;
@@ -801,40 +893,7 @@ H=-
 &lt;p&gt;4.Conjugate gradient method - Wikipedia&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>stg1</name></author><summary type="html">机器学习导论 算法及其实现 1 作者：崔嘉珩 在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。</summary></entry><entry><title type="html">Pim, python in math</title><link href="http://localhost:4000/2020/09/26/PIM,-Python-in-math.html" rel="alternate" type="text/html" title="Pim, python in math" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/PIM,%20Python%20in%20math</id><content type="html" xml:base="http://localhost:4000/2020/09/26/PIM,-Python-in-math.html">&lt;h1 id=&quot;用python做数值计算&quot;&gt;用python做数值计算&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;本文用到的module有numpy,scipy,matplotlib.
-本文包含多个教程，收集自互联网。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;快速入门教程&quot;&gt;&lt;a href=&quot;https://www.numpy.org.cn/user/quickstart.html&quot;&gt;快速入门教程&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;来自numpy中文网。&lt;/p&gt;
-
-&lt;h2 id=&quot;vectors-matrices-and-least-squares&quot;&gt;&lt;a href=&quot;https://ses.library.usyd.edu.au/handle/2123/21370&quot;&gt;Vectors, Matrices, and Least Squares&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;从线性代数的角度，综合介绍了“有用”的函数和语法。&lt;/p&gt;
-
-&lt;h2 id=&quot;runooborg&quot;&gt;Runoob.org&lt;/h2&gt;
-
-&lt;h3 id=&quot;numpy教程&quot;&gt;&lt;a href=&quot;https://www.runoob.com/numpy/numpy-tutorial.html&quot;&gt;NumPy教程&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h3 id=&quot;matplotlib教程&quot;&gt;&lt;a href=&quot;https://www.runoob.com/w3cnote/matplotlib-tutorial.html&quot;&gt;Matplotlib教程&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h2 id=&quot;scipy-docs&quot;&gt;&lt;a href=&quot;https://www.scipy.org/docs.html&quot;&gt;SciPy Docs&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;官方文档，页面包括:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Numpy: 矩阵运算&lt;/li&gt;
-  &lt;li&gt;Scipy: 科学计算&lt;/li&gt;
-  &lt;li&gt;Matplotlib: 绘图&lt;/li&gt;
-  &lt;li&gt;SymPy: 符号计算&lt;/li&gt;
-  &lt;li&gt;pandas: 数据处理&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>rym</name></author><summary type="html">用python做数值计算 本文用到的module有numpy,scipy,matplotlib. 本文包含多个教程，收集自互联网。</summary></entry><entry><title type="html">A course in pytorch 2</title><link href="http://localhost:4000/2020/09/26/A-Course-in-Pytorch-2.html" rel="alternate" type="text/html" title="A course in pytorch 2" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/A%20Course%20in%20Pytorch-2</id><content type="html" xml:base="http://localhost:4000/2020/09/26/A-Course-in-Pytorch-2.html">&lt;h1 id=&quot;pytorch-入门&quot;&gt;Pytorch 入门&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>stg1</name></author><summary type="html">机器学习导论 算法及其实现 1 作者：崔嘉珩 在本章中，我们将重点介绍优化方法中的梯度下降，并说明梯度下降在模型调优中如何工作。 最后，我们将介绍一些改进的梯度下降方法。</summary></entry><entry><title type="html">A course in pytorch 2</title><link href="http://localhost:4000/2020/09/26/A-Course-in-Pytorch-2.html" rel="alternate" type="text/html" title="A course in pytorch 2" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/A%20Course%20in%20Pytorch-2</id><content type="html" xml:base="http://localhost:4000/2020/09/26/A-Course-in-Pytorch-2.html">&lt;h1 id=&quot;pytorch-入门&quot;&gt;Pytorch 入门&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;本文翻译自pytorch官方教程&lt;a href=&quot;https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html&quot;&gt;DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ&lt;/a&gt;，共四篇。
@@ -1043,7 +1102,40 @@ print(x)
 &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cuda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_available&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>rym</name></author><summary type="html">环境搭建：Anaconda+pytorch+CUDA+VS Code 请先通读此手册，再逐步安装。 本文改编自CSDN,超级详细！vscode+anaconda+tensorflow2.0 搭建机器学习开发环境，有删改。</summary></entry><entry><title type="html">Operator system</title><link href="http://localhost:4000/2020/09/26/Operator-System.html" rel="alternate" type="text/html" title="Operator system" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/Operator%20System</id><content type="html" xml:base="http://localhost:4000/2020/09/26/Operator-System.html">&lt;h1 id=&quot;现代操作系统&quot;&gt;现代操作系统&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>rym</name></author><summary type="html">环境搭建：Anaconda+pytorch+CUDA+VS Code 请先通读此手册，再逐步安装。 本文改编自CSDN,超级详细！vscode+anaconda+tensorflow2.0 搭建机器学习开发环境，有删改。</summary></entry><entry><title type="html">Pim, python in math</title><link href="http://localhost:4000/2020/09/26/PIM,-Python-in-math.html" rel="alternate" type="text/html" title="Pim, python in math" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/PIM,%20Python%20in%20math</id><content type="html" xml:base="http://localhost:4000/2020/09/26/PIM,-Python-in-math.html">&lt;h1 id=&quot;用python做数值计算&quot;&gt;用python做数值计算&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本文用到的module有numpy,scipy,matplotlib.
+本文包含多个教程，收集自互联网。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;快速入门教程&quot;&gt;&lt;a href=&quot;https://www.numpy.org.cn/user/quickstart.html&quot;&gt;快速入门教程&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;来自numpy中文网。&lt;/p&gt;
+
+&lt;h2 id=&quot;vectors-matrices-and-least-squares&quot;&gt;&lt;a href=&quot;https://ses.library.usyd.edu.au/handle/2123/21370&quot;&gt;Vectors, Matrices, and Least Squares&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;从线性代数的角度，综合介绍了“有用”的函数和语法。&lt;/p&gt;
+
+&lt;h2 id=&quot;runooborg&quot;&gt;Runoob.org&lt;/h2&gt;
+
+&lt;h3 id=&quot;numpy教程&quot;&gt;&lt;a href=&quot;https://www.runoob.com/numpy/numpy-tutorial.html&quot;&gt;NumPy教程&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;matplotlib教程&quot;&gt;&lt;a href=&quot;https://www.runoob.com/w3cnote/matplotlib-tutorial.html&quot;&gt;Matplotlib教程&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h2 id=&quot;scipy-docs&quot;&gt;&lt;a href=&quot;https://www.scipy.org/docs.html&quot;&gt;SciPy Docs&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;官方文档，页面包括:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Numpy: 矩阵运算&lt;/li&gt;
+  &lt;li&gt;Scipy: 科学计算&lt;/li&gt;
+  &lt;li&gt;Matplotlib: 绘图&lt;/li&gt;
+  &lt;li&gt;SymPy: 符号计算&lt;/li&gt;
+  &lt;li&gt;pandas: 数据处理&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>rym</name></author><summary type="html">用python做数值计算 本文用到的module有numpy,scipy,matplotlib. 本文包含多个教程，收集自互联网。</summary></entry><entry><title type="html">Operator system</title><link href="http://localhost:4000/2020/09/26/Operator-System.html" rel="alternate" type="text/html" title="Operator system" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/Operator%20System</id><content type="html" xml:base="http://localhost:4000/2020/09/26/Operator-System.html">&lt;h1 id=&quot;现代操作系统&quot;&gt;现代操作系统&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;本文节选自《现代操作系统，第四版/Modern Operating System, 4th ed》，1.1-1.5节。
@@ -1151,202 +1243,4 @@ print(x)
 
 &lt;h3 id=&quot;保护&quot;&gt;保护&lt;/h3&gt;
 
-&lt;h3 id=&quot;shell&quot;&gt;shell&lt;/h3&gt;</content><author><name>rym</name></author><summary type="html">现代操作系统 本文节选自《现代操作系统，第四版/Modern Operating System, 4th ed》，1.1-1.5节。 本文只保留主干框架，详情阅读原文。</summary></entry><entry><title type="html">A course in pytorch</title><link href="http://localhost:4000/2020/09/26/A-Course-in-Pytorch.html" rel="alternate" type="text/html" title="A course in pytorch" /><published>2020-09-26T00:00:00+08:00</published><updated>2020-09-26T00:00:00+08:00</updated><id>http://localhost:4000/2020/09/26/A%20Course%20in%20Pytorch</id><content type="html" xml:base="http://localhost:4000/2020/09/26/A-Course-in-Pytorch.html">&lt;h1 id=&quot;pytorch-入门&quot;&gt;Pytorch 入门&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;本文翻译自pytorch官方教程&lt;a href=&quot;https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html&quot;&gt;DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ&lt;/a&gt;，共四篇。
-这是第一篇What is Pytorch?.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;教程目标：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;在整体上理解Pytorch的Tensor(张量)库和神经网络(neural networks)。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;训练一个小型神经网络来分类图片。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这个教程假设读者对numpy有基本了解。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;what-is-pytorch什么是-pytorch&quot;&gt;WHAT IS PYTORCH?什么是 PyTorch?&lt;/h2&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;什么是-pytorch&quot;&gt;什么是 PyTorch?&lt;/h1&gt;
-
-&lt;p&gt;这是一个针对以下两种需求的基于 Python 科学计算软件包：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;替代 NumPy 来发挥 GPU 的性能&lt;/li&gt;
-  &lt;li&gt;提供最大便捷以及速度的深度学习研究平台&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;开始&quot;&gt;开始&lt;/h2&gt;
-
-&lt;h3 id=&quot;tensors&quot;&gt;Tensors&lt;/h3&gt;
-
-&lt;p&gt;Tensors 与 NumPy 中的 ndarrays 类似, 另外 Tensors 可以使用 GPU 来加速计算.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print_function&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;alert alert-info&quot;&gt;&lt;h4&gt;Note&lt;/h4&gt;&lt;p&gt;当矩阵被声明却未进行初始化，
-    在它被使用之前，我们都不能确定矩阵中元素的值. 
-    当一个未被初始化的矩阵被创建时,被分配到矩阵的内存
-    中存储的值就是矩阵的初始值.&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;创建一个 5x3 的矩阵, 未进行初始化:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;创建一个随机初始化的矩阵:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;创建一个数据类型为 long 的元素全部为 0 的矩阵:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;直接使用数据创建 tensor:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;或者根据已有的 tensor 来创建新的 tensor. 这些方法会反复用到参数的属性， 例如 dtype， 除非值由用户提供.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# new_* methods take in sizes
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# override dtype!
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                                      &lt;span class=&quot;c1&quot;&gt;# result has the same size
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;获得它的大小:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;alert alert-info&quot;&gt;&lt;h4&gt;Note&lt;/h4&gt;&lt;p&gt;``torch.Size`` 实际上是一个 tuple(元组), 所以它支持所有的 tuple 操作.&lt;/p&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;运算&quot;&gt;运算&lt;/h3&gt;
-
-&lt;p&gt;针对运算有不同的语法. 在下面的例子中, 我们会涉及加法运算.&lt;/p&gt;
-
-&lt;p&gt;加法: 语法 1&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;加法: 语法 2&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;加法: 将运算结果作为参数&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;加法: in-place(原地操作符:不经过复制操作，而是直接在原来的内存上改变它的值.)&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# adds x to y
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;alert alert-info&quot;&gt;&lt;h4&gt;Note&lt;/h4&gt;&lt;p&gt;任何使用 in-place 来改变 tensor 的操作都会在后面加上 ``_``.
-    例如: ``x.copy_(y)``, ``x.t_()``, 会改变 ``x``.&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;你可以使用各种标准 NumPy 风格的索引!&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;调整大小: 如果你想要 resize/reshape(调整大小或改变形状) tensor， 你可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;torch.view&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# the size -1 is inferred from other dimensions
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;对于只含一个元素的 tensor, 使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.item()&lt;/code&gt; 来得到它的数值&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Read later:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;100+ Tensor 操作, 包括转置， 索引，切片，数学运算， 线性代数， 随机数等等,
-  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;here &amp;lt;https://pytorch.org/docs/torch&amp;gt;&lt;/code&gt;_.&lt;/p&gt;
-
-&lt;h2 id=&quot;numpy-bridge&quot;&gt;NumPy Bridge&lt;/h2&gt;
-
-&lt;p&gt;将 Tensor 转化为 NumPy 中的数组类型或者将数组转化为 Tensor 都是非常简单的.&lt;/p&gt;
-
-&lt;p&gt;Torch 中的 tensor 与 NumPy 中的数组会共享底层的内存（如果 tensor 在 CPU 上）， 
-且改变其中一个另一个也会改变.&lt;/p&gt;
-
-&lt;h3 id=&quot;将-tensor-转化为-numpy-中的数组类型&quot;&gt;将 Tensor 转化为 NumPy 中的数组类型&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;NumPy 中的数组如何改变值.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;将-numpy-的数组转化为-torch-中的-tensor&quot;&gt;将 NumPy 的数组转化为 Torch 中的 tensor&lt;/h3&gt;
-
-&lt;p&gt;数组如何自动转化为 tensor&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_numpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;除了 CharTensor 所有在 CPU 上的 tensor 都支持在数组之间的转换.&lt;/p&gt;
-
-&lt;h2 id=&quot;cuda-tensors&quot;&gt;CUDA Tensors&lt;/h2&gt;
-&lt;p&gt;通过使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.to&lt;/code&gt; Tensors 可以移动到任何设备上.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# let us run this cell only if CUDA is available
-# We will use ``torch.device`` objects to move tensors in and out of GPU
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cuda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_available&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cuda&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# a CUDA device object
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# directly create a tensor on GPU
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                       &lt;span class=&quot;c1&quot;&gt;# or just use strings ``.to(&quot;cuda&quot;)``
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cpu&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# ``.to`` can also change dtype together!
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>vjy</name></author><summary type="html">Pytorch 入门 本文翻译自pytorch官方教程DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ，共四篇。 这是第一篇What is Pytorch?. 教程目标： 在整体上理解Pytorch的Tensor(张量)库和神经网络(neural networks)。 训练一个小型神经网络来分类图片。 这个教程假设读者对numpy有基本了解。</summary></entry></feed>
+&lt;h3 id=&quot;shell&quot;&gt;shell&lt;/h3&gt;</content><author><name>rym</name></author><summary type="html">现代操作系统 本文节选自《现代操作系统，第四版/Modern Operating System, 4th ed》，1.1-1.5节。 本文只保留主干框架，详情阅读原文。</summary></entry></feed>
