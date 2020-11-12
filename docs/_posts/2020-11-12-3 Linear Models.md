@@ -10,6 +10,8 @@ catagory: blog
 
 <!-- more -->
 
+[download ipynb file]({{site.url}}/assets/files/3 Linear Models.ipynb)
+
 ## 1.Linear Regression
 ### (1) Linear models
 We have a training set $S = \left\{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\right\}$, where $x_i \in R^{p \times 1} ,y_i \in R$.

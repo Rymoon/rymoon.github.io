@@ -10,6 +10,8 @@ catagory: blog
 
 <!-- more -->
 
+[download ipynb file]({{site.url}}/assets/files/1 GradientDescent.ipynb)
+
 ## 1.Gradient Descent
 ### (1) Basic thoughts
 Gradient descent is a first-order iterative optimization algorithm for finding a local minimum of a differentiable function.

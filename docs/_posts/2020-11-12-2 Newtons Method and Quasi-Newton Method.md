@@ -6,12 +6,17 @@ catagory: blog
 # *Introduction to Machine Learning* Algorithms and Realizations 2
 
 ## By Jiaheng Cui
+
 >In this chapter, we'll focus on Newton's Method and DFP Quasi-Newton Method. If you are interested, you can also see how Zhihao Lyu used Newton's Method to solve the MLE of a Gamma distribution
 
 <!-- more -->
 
+[download ipynb file]({{site.url}}/assets/files/2 Newtons Method and Quasi-Newton Method.ipynb)
+
 ## 1.Newton's Method
+
 ### (1) Basic thoughts
+
 We introduced that gradient descent is a first-order optimization algorithm for finding a local minimum of a differentiable function in the last chapter. Now we introduce a second-order method, Newton's Method, or the Newton-Raphson Method.
 
 We want to solve the following optimization problem:
