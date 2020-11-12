@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+     <meta charset="utf-8">
+     
+         <script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+     TeX: {
+         equationNumbers: {
+             autoNumber: "AMS"
+         }
+     },
+     tex2jax: {
+         inlineMath: [ ['$','$'] ],
+         processEscapes: true,
+     }
+ });
+ </script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+ </script>
+
+     
+
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>3 linear models | Rymoon’s Website</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="3 linear models" />
+<meta name="author" content="stg1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction to Machine Learning Algorithms and Realizations 3 By Jiaheng Cui In this chapter, we’ll focus on an Linear Models. We’ll discuss Linear Regression, its regularization Ridge Regression and Lasso Regression, Linear Classification, Logistic Regression and finally Linear Discriminant Analysis." />
+<meta property="og:description" content="Introduction to Machine Learning Algorithms and Realizations 3 By Jiaheng Cui In this chapter, we’ll focus on an Linear Models. We’ll discuss Linear Regression, its regularization Ridge Regression and Lasso Regression, Linear Classification, Logistic Regression and finally Linear Discriminant Analysis." />
+<link rel="canonical" href="http://localhost:4000/2020/11/12/3-Linear-Models.html" />
+<meta property="og:url" content="http://localhost:4000/2020/11/12/3-Linear-Models.html" />
+<meta property="og:site_name" content="Rymoon’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-12T00:00:00+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2020/11/12/3-Linear-Models.html","headline":"3 linear models","dateModified":"2020-11-12T00:00:00+08:00","datePublished":"2020-11-12T00:00:00+08:00","author":{"@type":"Person","name":"stg1"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/11/12/3-Linear-Models.html"},"description":"Introduction to Machine Learning Algorithms and Realizations 3 By Jiaheng Cui In this chapter, we’ll focus on an Linear Models. We’ll discuss Linear Regression, its regularization Ridge Regression and Lasso Regression, Linear Classification, Logistic Regression and finally Linear Discriminant Analysis.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=273ec00d6f02ee547cdd583a95466fd9c76bed0d">
+  </head>
+  <body>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">3 linear models</h1>
+      <h2 class="project-tagline">A humble website.</h2>
+      
+        <a href="https://github.com/Rymoon/rymoon.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1>3 linear models</h1>
+
+<p>
+  12 Nov 2020
+  
+  
+    - <a href="/authors/stg1.html">吕之豪 崔嘉珩 肖韵竹 戴文娇</a>
+  
+</p>
+
+<h1 id="introduction-to-machine-learning-algorithms-and-realizations-3"><em>Introduction to Machine Learning</em> Algorithms and Realizations 3</h1>
+
+<h2 id="by-jiaheng-cui">By Jiaheng Cui</h2>
+<blockquote>
+  <p>In this chapter, we’ll focus on an Linear Models. We’ll discuss Linear Regression, its regularization Ridge Regression and Lasso Regression, Linear Classification, Logistic Regression and finally Linear Discriminant Analysis.</p>
+</blockquote>
+
+<!-- more -->
+
+<h2 id="1linear-regression">1.Linear Regression</h2>
+<h3 id="1-linear-models">(1) Linear models</h3>
+<p>We have a training set $S = \left{(x_1,y_1),(x_2,y_2),…,(x_n,y_n)\right}$, where $x_i \in R^{p \times 1} ,y_i \in R$.</p>
+
+<p>Linear Models are the simpliest models, assuming that the relationship between $y$ and $x$ is linear, which is:
+\(y = X\beta + \epsilon\)</p>
+
+<p>where
+$y = (y_1, y_2, …, y_n)^T$, $X = (1, x_1, x_2, …, x_n)^T = \left[\begin{matrix} 1 &amp; x_{11} &amp; \cdots &amp; x_{1p}\ 1 &amp; x_{21} &amp; \cdots &amp; x_{2p}\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ 1 &amp; x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, $\beta = (\beta_0, \beta_1, \beta_2, …, \beta_p)^T$, $\epsilon = (\epsilon_1, \epsilon_2, …, \epsilon_n)^T$.</p>
+
+<p>Notes:</p>
+
+<p>&lt;1&gt; What is the point of $\epsilon$?</p>
+
+<p>$\epsilon$ is an error term, or “noise”. Obviously, not every training dataset is perfectly on a straight line, some of them just lie in a shape that look like a straight line that can “go through” them (and even more of them do not fit a linear model). However, if the model just looks like $y = X\beta$, we cannot interpret this result.</p>
+
+<p>If we assume that there were noises between the observed value and its predicted value according to the linearity, it could be interpreted. Consider $x_i$, the difference between the predicted value of $y_i$ (denoted as $\hat{y_i}$) and the true value $y_i$ is actually an estimation of $\epsilon_i$.</p>
+
+<p>&lt;2&gt; Why do we have a “1” in the front of every row?</p>
+
+<p>As we can see, if $X$ doesn’t have a “1” in the front of each row, the straight line must go through the origin. The “1”s just make sure that the bias term (or intercept) $\beta_0$ exists.</p>
+
+<p>&lt;3&gt; Assumptions of a linear model:</p>
+
+<p>The rows of $X$, which is $\left {x_i\right}_{i=1}^{n}$, are independent.</p>
+
+<p>$X$ must have full rank (e.g. $n \ge p+1$), otherwise we may face the problem of multicollinearity or that $X^T X$ is not invertible.</p>
+
+<p>$\epsilon_i$ are independent, with $E(\epsilon_i) = 0$, $Var(\epsilon_i) = \sigma^2$ (the assumption of $\epsilon_i$ has a constant variance is called homoscedasticity).</p>
+
+<h3 id="2-ordinary-least-squares-ols">(2) Ordinary Least Squares (OLS)</h3>
+<p>Suppose we choose MSE as our loss function, which is $MSE(\beta) = \frac{1}{n} \parallel X \beta - y\parallel^2$. We want to find the $\beta$ that minimizes MSE, which leads to the following optimization problem:
+\(\hat{\beta} = \mathop{\arg\min}\limits_{\beta \in R^{n \times 1}} \frac{1}{n} \parallel X \beta - y\parallel^2\)</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Note that MSE is a convex function, so we can compute $\hat{\beta}$ by letting $ \frac{\partial MSE}{\partial \beta}</td>
+      <td>_ \hat{\beta} = 0$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>From $\frac{\partial MSE}{\partial \beta}</td>
+      <td>_ \hat{\beta} = 0$ can we get $(X^T X)\hat{\beta} = X^Ty$. Since $X$ has full rank, $X^T X$ is invertible. Then the final result would be: \(\hat{\beta} = (X^T X)^{-1}X^T y\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-algorithm">(3) Algorithm</h3>
+<p>Input: training instances $X = \left[\begin{matrix}  x_{11} &amp; \cdots &amp; x_{1p}\ \vdots &amp; \ddots &amp; \vdots \ x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, label vector $y = (y_1, y_2, …, y_n)^T$.</p>
+
+<p>Output: parameter vector $\hat{\beta}$</p>
+
+<p>Step1: load $X$ and $y$, note that there isn’t a “1” in the front of each row, we’ll add them manually.</p>
+
+<p>Step2: let $\hat{\beta} = (X^T X)^{-1}X^T y$, so the model we trained is $y = X \hat{\beta}$.</p>
+
+<h3 id="4-code">(4) Code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Linear_Regressor</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span><span class="c1">#We'll add the "1"s here
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+    <span class="k">def</span> <span class="nf">OLS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)).</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="c1">#np.linalg.inv(A) can solve the inverse of A
+</span>        
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">OLS</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_new</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_new</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X_new</span><span class="p">].</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">)</span><span class="c1">#We'll add the "1"s here since X_new is a new training instance matrix
+</span></code></pre></div></div>
+
+<p>We’ll train a linear regression model <code class="language-plaintext highlighter-rouge">lm</code> using the following training set $S = {(X,y)}$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">110</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+
+<span class="n">lm</span> <span class="o">=</span> <span class="n">Linear_Regressor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">lm</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We can get the parameter vector $\hat{\beta}$ by calling <code class="language-plaintext highlighter-rouge">lm.beta_hat</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lm</span><span class="p">.</span><span class="n">beta_hat</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-73.72093023,   7.20930233])
+</code></pre></div></div>
+
+<p>We have a new data set $X_{new}$, let’s see its predictions using our regression model by calling <code class="language-plaintext highlighter-rouge">lm.fit(X_new)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">lm</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-66.51162791, -59.30232558])
+</code></pre></div></div>
+
+<h2 id="2regularization">2.Regularization</h2>
+<h3 id="1-basic-thoughts">(1) Basic thoughts</h3>
+<p>In the above OLS model, we assume that $X$ is full-rank so that $X^T X$ is invertible. However in real-life problems, sometimes the number of features are greater than the number of samples, i.e. $n \lt p$. Here $\hat{\beta}$ has no explicit solution, and there may beseveral $\hat{\beta}$ s. To avoid this, we could use a method called <strong>regularization</strong>.</p>
+
+<p>We’ll add a <strong>penalty term</strong> to the loss function (we’ll still use MSE as our loss function), aiming at restricting every $\beta_i$ from being too large while effectively avoiding overfitting. The penalty term could be a norm of $\beta$. This leads to ridge regression and lasso regression.</p>
+
+<h3 id="2-ridge-regression">(2) Ridge regression</h3>
+<p>We insert $\parallel \beta \parallel_2$ into the loss function, where our new loss function is $loss(\beta) = MSE + \lambda \parallel \beta \parallel^2_2 = \frac{1}{n}(y-X\beta)^T (y-X\beta) + \lambda \beta^T \beta$. In fact, we can just get rid of $\frac{1}{n}$ to make it easier to compute, and let \(loss(\beta) = (y-X\beta)^T (y-X\beta) + \lambda \beta^T \beta\)</p>
+
+<p>Here $\lambda \ge 0$ is called the regularization parameter. If $\lambda$ is relatively large, then $\beta_i$ would be smaller, and the impact of multicollinearity will be reduced, meanwhile $\hat{y}$ and $y$ would differ more; when $\lambda = 0$, ridge regression becomes linear regression. Hence choosing a proper $\lambda$ is essential, which could be done by grid search.</p>
+
+<p>Moreover, when we use $loss(\beta)$ as our loss function, $\hat{\beta} = (X^T X+\lambda I)^{-1}X^Ty$, where $I$ is the identity matrix of size $p+1$. When $X^T X$ is not invertible, $X^T X+\lambda I$ is always invertible, so we can avoid the problem of non-invertible $X^T X$.</p>
+
+<h3 id="3-lasso-regression-not-covered-in-the-course">(3) Lasso regression* (not covered in the course)</h3>
+<p>Insead of adding $\parallel \beta \parallel_2$, we add $\parallel \beta \parallel_1$ into the loss function. The new loss function is \(loss(\beta) = (y-X\beta)^T (y-X\beta) + \lambda \sum^n_{i=0}| \beta_i |\)</p>
+
+<p>Lasso regression tends to result in some weights ($\beta_i$) being exactly 0, which makes it easier to do feature selection (or dimension reduction), while ridge regression could only make weights close to 0.</p>
+
+<p>However, $\parallel \beta \parallel_1$ is not differentiable at point $0$. Thus, we don’t have a explicit formula of $\beta$, we could only use a iterative method to solve it. Since it’s not differentiable, we cannot use gradient descent or Newton’s method. The common methods solving lasso regression problems include coordinate descent, subgradient methods and least-angle regression.</p>
+
+<h3 id="4-algorithms-and-codes">(4) Algorithms and Codes</h3>
+
+<h4 id="1-ridge-regression">&lt;1&gt; Ridge regression</h4>
+<p>Input: training instances $X = \left[\begin{matrix}  x_{11} &amp; \cdots &amp; x_{1p}\ \vdots &amp; \ddots &amp; \vdots \ x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, label vector $y = (y_1, y_2, …, y_n)^T$, regularization parameter $\lambda$.</p>
+
+<p>Output: parameter vector $\hat{\beta}$</p>
+
+<p>Step1: load $X$ and $y$, note that there isn’t a “1” in the front of each row, we’ll add them manually.</p>
+
+<p>Step2: let $\hat{\beta} = (X^T X + \lambda I)^{-1}X^T y$, so the model we trained is $y = X \hat{\beta}$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Ridge_Regressor</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">par_lambda</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">par_lambda</span> <span class="o">=</span> <span class="n">par_lambda</span>
+        <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">par_lambda</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])).</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="c1">#np.identity(n) creates an identity matrix of size n
+</span>        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_new</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_new</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X_new</span><span class="p">].</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We’ll train a ridge regression model <code class="language-plaintext highlighter-rouge">rlm</code> using the following training set $S = {(X,y)}$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">110</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+
+<span class="n">rlm</span> <span class="o">=</span> <span class="n">Ridge_Regressor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">rlm</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We can get the parameter vector $\hat{\beta}$ by calling <code class="language-plaintext highlighter-rouge">rlm.beta_hat</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rlm</span><span class="p">.</span><span class="n">beta_hat</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-31.31989943,   5.82603634])
+</code></pre></div></div>
+
+<p>As we can see, the absolute values of $\beta_i$s are indeed closer to 0 than traditional OLS.</p>
+
+<p>We have a new data set $X_{new}$, let’s see its predictions using our regression model by calling <code class="language-plaintext highlighter-rouge">rlm.fit(X_new)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">rlm</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-25.49386309, -19.66782675])
+</code></pre></div></div>
+
+<h4 id="2-lasso-regression">&lt;2&gt; Lasso regression*</h4>
+<p>Since lasso regression is not covered in the course, we just list two iterative methods from Wikipedia:</p>
+
+<p>Proximal Gradient Method: https://en.wikipedia.org/wiki/Proximal_gradient_methods_for_learning#Lasso_regularization</p>
+
+<p>Least-Angle Regression (LARS): https://en.wikipedia.org/wiki/Least-angle_regression</p>
+
+<p>And those who are interested in the source code could find it from sklearn:
+https://github.com/scikit-learn/scikit-learn</p>
+
+<p>Some basic examples using lasso regression:
+https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</p>
+
+<h2 id="3linear-classification">3.Linear Classification</h2>
+<p>Note: For the following classification problems, we only focus on <strong>binary classification</strong>.</p>
+
+<h3 id="1-linear-model-using-ols">(1) Linear model using OLS</h3>
+<p>If we have two classes of sample, Positive and Negative, we can set $y = \begin{cases} 1 &amp; x \in Positive \ 0 &amp; x \in Negative \end{cases}$. Then we can use OLS to train a linear model $y = X\beta - 0.5$, recall that when using OLS, $\hat{\beta} = (X^T X)^{-1} X^T y$. If $\hat{y} \gt 0$, the sample is more likely to be in the Positive Class; if$\hat{y} \lt 0$, it’s more likely to be in the Negative Class; when$\hat{y} = 0$, it’s hard to classify, we may leave it alone, or just throw it into a random class. This is how we use a linear model to do classification.</p>
+
+<p>Note: the <strong>threshold</strong> we use here is 0.5, which suggest that $class(x) = \begin{cases} Positive &amp; x^T \beta \gt 0.5 \ Negative &amp; x^T \beta \lt 0.5 \end{cases}$. In real cases, the threshold may vary.</p>
+
+<h3 id="2-algorithm">(2) Algorithm</h3>
+<p>Input: training instances $X = \left[\begin{matrix}  x_{11} &amp; \cdots &amp; x_{1p}\ \vdots &amp; \ddots &amp; \vdots \ x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, label vector $y = (y_1, y_2, …, y_n)^T$ ($y$ should be a $0-1$ vector), test instance $x$.</p>
+
+<p>Output: the class where $x$ belongs to.</p>
+
+<p>Step1: load $X$ and $y$, note that there isn’t a “1” in the front of each row, we’ll add them manually.</p>
+
+<p>Step2: let $\hat{\beta} = (X^T X)^{-1}X^T y$, so the model we trained is $y = X \hat{\beta} - 0.5$.</p>
+
+<p>Step3: when classifying the test instance $x$, add a “1” in the front of it, and calculate $\hat{y} = x^T \hat{\beta} - 0.5$. If $\hat{y} = 0$, $x$ cannot be classified, print “Cannot be classified.”; otherwise, let $class = \begin{cases} Positive &amp; \hat{y} \gt 0 \ Negative &amp; \hat{y} \lt 0 \end{cases}$.</p>
+
+<h3 id="3-code">(3) Code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Linear_Classifier</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+    <span class="k">def</span> <span class="nf">OLS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)).</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">OLS</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_new</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_new</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X_new</span><span class="p">].</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Cannot be classified."</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">c</span>
+</code></pre></div></div>
+
+<p>We’ll train a linear classifier <code class="language-plaintext highlighter-rouge">lc</code> using the following training set $S = {(X,y)}$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">lc</span> <span class="o">=</span> <span class="n">Linear_Classifier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">lc</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We can get the parameter vector $\hat{\beta}$ by calling <code class="language-plaintext highlighter-rouge">lc.beta_hat</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lc</span><span class="p">.</span><span class="n">beta_hat</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-1.18023256,  0.05232558])
+</code></pre></div></div>
+
+<p>We have a new data set $X_{new}$, let’s see its predictions using our regression model by calling <code class="language-plaintext highlighter-rouge">lc.fit(X_new)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">lc</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 0., 1., 1.])
+</code></pre></div></div>
+
+<h2 id="4logistic-regression">4.Logistic regression:</h2>
+<h3 id="1-basic-thoughts-1">(1) Basic thoughts</h3>
+<p>What if we want the probability of $x$ belongs to the Positive Class rather than only do the classification? To solve this problem, we need to use a continuous function. We introduce the Sigmoid activation function: \(S(x) = \frac{1}{1+e^{-x}}\)</p>
+
+<h4 id="1-properties-of-sigmoid-function">&lt;1&gt; Properties of Sigmoid function:</h4>
+<ul>
+  <li>$x$ could be any real number when calculating $S(x)$, and projects $(- \infty, + \infty)$ to $(0,1)$.</li>
+  <li>$S(0) = 0.5$.</li>
+  <li>$S(x)$ is strictly monotonically increasing along the real axis.</li>
+  <li>When $x$ is very close to $- \infty$, $S(x)$ would be close to $0$; when $x$ is very close to $+ \infty$, $S(x)$ would be close to $1$.</li>
+  <li>$S(x)$ is smooth and derivable at every point, where $S’(x) = \frac{e^{-x}}{(1+e^{-x})^2}= S(x)(1-S(x))$.</li>
+</ul>
+
+<h4 id="2-a-picture-of-sigmoid-function">&lt;2&gt; A picture of Sigmoid function:</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+ 
+<span class="n">sigmoid_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">sigmoid_outputs</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">sigmoid_inputs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sigmoid_inputs</span><span class="p">,</span><span class="n">sigmoid_outputs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"S(x)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Sigmoid Function"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/image/2020-11-12-3 Linear Models/2020-11-12-3%20Linear%20Models_29_0.png" alt="png" /></p>
+
+<h3 id="2-logistic-regression">(2) Logistic Regression</h3>
+<p>The logistic regression model is \(y = S(\beta^T x) = \frac{1}{1+e^{-\beta^T x}}\)</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Due to its properties, $y$ could be seen as the probability of $x$ being classified into the Positive Class. Thus $p(y = 1</td>
+      <td>x; \beta) = \frac{1}{1+e^{-\beta^T x}}$, $p(y = 0</td>
+      <td>x; \beta) = 1 - p(y=1</td>
+      <td>x; \beta)= \frac{e^{-\beta^T x}}{1+e^{-\beta^T x}}$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The result of the model is a continuous probability, so it seems like a regression model. However, we always set a threshold (e.g. 0.5), and use logistic regression to do the following classification:</p>
+
+\[class = \begin{cases} Positive &amp; \hat{y}\gt 0.5 \\ Negative &amp; \hat{y} \lt 0.5 \end{cases}\]
+
+<p>We want to find a Maximum Likelihood Estimate (MLE) $\hat{\beta}$ to estimate $\beta$, which would make the prediction accuracy the largest:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The likelihood function is $L(\beta) = \prod^n_{i=1}p(y_i</td>
+      <td>x_i;\beta) = \prod^n_{i=1}\left[p(y = 1</td>
+      <td>x; \beta)^{y_i} p(y = 0</td>
+      <td>x; \beta)^{1-y_i}\right]$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The log likelihood function is $l(\beta) = ln L(\beta) = \sum^n_{i=1} \left[y_i ln p(y = 1</td>
+      <td>x; \beta) + (1-y_i) ln p(y = 0</td>
+      <td>x; \beta)\right]$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>$l(\beta)$ is a concave function over $R^{(p+1) \times 1}$, and we want to find the maximum. Let $J(\beta) = -l(\beta)$, then $J(\beta)$ is a convex function and we want to find the minimum of it. So we can use gradient descent or Newton’s method to find $\hat{\beta}$.</p>
+
+<p>Note that the gradient vector of $J(\beta)$ is $g(\beta) = \nabla J(\beta) = \frac{1}{n}X^T (S(X \beta)-y)$.</p>
+
+<h3 id="3-algorithm-1">(3) Algorithm</h3>
+<p>Input: training instances $X = \left[\begin{matrix}  x_{11} &amp; \cdots &amp; x_{1p}\ \vdots &amp; \ddots &amp; \vdots \ x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, label vector $y = (y_1, y_2, …, y_n)^T$ ($y$ should be a $0-1$ vector), test instance $x$.</p>
+
+<p>Output: the probability of $x$ belongs to the Positive Class, and the class where x belongs to.</p>
+
+<p>Step1: load $X$ and $y$, note that there isn’t a “1” in the front of each row, we’ll add them manually.</p>
+
+<p>Step2: let $S(x,\beta) = \frac{1}{1+e^{-\beta^T x}}$, $J(\beta) = -\sum^n_{i=1} \left[y_i ln S(x_i,\beta) + (1-y_i) (1-S(x_i,\beta))\right]$.</p>
+
+<p>Step3: use gradient descent to find $\hat{\beta}$.</p>
+
+<p>Step4: when classifying the test instance $x$, add a “1” in the front of it, and calculate $\hat{y} = \frac{1}{1+e^{- \hat{\beta}^ T x}}$. If $\hat{y} = 0.5$, $x$ cannot be classified, print “Cannot be classified.”; otherwise, let $class = \begin{cases} Positive &amp; \hat{y} \gt 0.5 \ Negative &amp; \hat{y} \lt 0.5 \end{cases}$.</p>
+
+<h3 id="4-code-1">(4) Code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Logistic_Regressor</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+    <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>  
+        
+    <span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">beta</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_hat</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y_hat</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">X</span><span class="p">.</span><span class="n">T</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">beta</span><span class="p">))</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">beta_0</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">k_max</span><span class="p">):</span>
+        <span class="n">beta_k</span> <span class="o">=</span> <span class="n">beta_0</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">g_k</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">g</span><span class="p">(</span><span class="n">beta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        
+            <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">g_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">beta_k</span>
+                <span class="k">break</span>
+        
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">p_k</span> <span class="o">=</span> <span class="o">-</span> <span class="n">g_k</span>
+                <span class="n">beta_k_new</span> <span class="o">=</span> <span class="n">beta_k</span> <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">p_k</span>
+            
+                <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">J</span><span class="p">(</span><span class="n">beta_k_new</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">J</span><span class="p">(</span><span class="n">beta_k</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span> <span class="ow">or</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">beta_k_new</span> <span class="o">-</span> <span class="n">beta_k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">beta_k_new</span>
+                    <span class="k">break</span>
+                
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">beta_k</span> <span class="o">=</span> <span class="n">beta_k_new</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="n">k_max</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="s">"Does not converge, calculation failed."</span>
+    
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">k_max</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">):</span>
+        <span class="n">beta_0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">gradient_descent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">beta_0</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">k_max</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_new</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X_new</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">X_new</span><span class="p">].</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">))</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Cannot be classified."</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>We’ll train a logistic regressor <code class="language-plaintext highlighter-rouge">logistic</code> using the following training set $S = {(X,y)}$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">logistic</span> <span class="o">=</span> <span class="n">Logistic_Regressor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">logistic</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We can get the parameter vector $\hat{\beta}$ by calling <code class="language-plaintext highlighter-rouge">logistic.beta_hat</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logistic</span><span class="p">.</span><span class="n">beta_hat</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-7.30274442,  0.22315088])
+</code></pre></div></div>
+
+<p>We have a new data set $X_{new}$, let’s see its predictions using our regression model by calling <code class="language-plaintext highlighter-rouge">logistic.fit(X_new)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">logistic</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.00623554, 0.05521479, 0.35246579, 0.83524847, 0.97926135],
+       [0.        , 0.        , 0.        , 1.        , 1.        ]])
+</code></pre></div></div>
+
+<h2 id="5linear-discriminant-analysis-lda">5.Linear Discriminant Analysis (LDA)</h2>
+<h3 id="1-basic-thoughts-2">(1) Basic thoughts</h3>
+<p>Linear Discriminant Analysis wants to find a straight line $y = \beta^T x$ that satisfies: when $X$ is projected to this line, the two groups $X_1 \in R^{n_1 \times (p+1)}$ and $X_2 \in R^{n_2 \times (p+1)}$ $(n_1 + n_2 = n)$ should be apart while within the same group, the samples should stay together.</p>
+
+<p>Note: LDA has the assumption that the covariance matrix of the two groups $\Sigma_1$ and $\Sigma_2$ are equal and full-rank.</p>
+
+<p>Let $J(\beta) = \frac{\parallel \beta^T \bar{X_1} - \beta^T \bar{X_2}\parallel^2<em>2}{\sum^{n_1}</em>{i=1}(\beta^T X_{1i} - \bar{X_1})^2 + \sum^{n_2}<em>{j=1}(\beta^T X</em>{2j} - \bar{X_2})^2}$. When maximizing $J(\beta)$, we want the numerator to be large, which would make the two centers of the groups apart; we also want the denominator to be small, which would make the two covariances of the groups small, suggesting that within each group, the samples are close to each other. Since $X$ is projected to the line, LDA is a dimension-reducing method.</p>
+
+<p>Let the Sums of Squares Between Groups $S_b = (\bar{X_1}-\bar{X_2})(\bar{X_1}-\bar{X_2})^T$, the Sums of Squares Within Groups $S_w = S_1 + S_2 = \sum^{n_1}<em>{i=1} (X</em>{1i}-\bar{X_1})(X_{1i}-\bar{X_1})^T + \sum^{n_2}<em>{j=1} (X</em>{2j}-\bar{X_2})(X_{2j}-\bar{X_2})^T$. Then we can rewrite $J(\beta)$as</p>
+
+<p>\(J(\beta) = \frac{\beta^T S_b \beta}{\beta^T S_w \beta}\).</p>
+
+<p>Note that if $\beta$ is a maximizer of $J(\beta)$, for any non-zero constant $c$, $c\beta$ is also a maximizer. So we can always find a maximizer $\beta$ that satisfies $\beta^T S_w \beta = 1$. Then the optimization problem becomes $\mathop{\min}\limits_{\beta} -\beta^T S_b \beta$; s.t. $\beta^T S_w \beta = 1$.</p>
+
+<p>By Lagrange multipliers can we get $S_w \beta = \bar{X_1}-\bar{X_2}$, if $S_w$ is invertible, then $\beta = S_w^{-1}(\bar{X_1}-\bar{X_2})$. However sometimes $S_w$ is non-invertible, we can imitate $\beta$ from ridge regression and let $\beta = (S_w + \lambda I)^{-1}(\bar{X_1}-\bar{X_2})$. When $S_w$ is large but invertible, we can consider Cholesky decomposition or iterative methods to compute $\beta$.</p>
+
+<h3 id="2-algorithm-1">(2) Algorithm</h3>
+<p>Input: training instances $X = \left[\begin{matrix}  x_{11} &amp; \cdots &amp; x_{1p}\ \vdots &amp; \ddots &amp; \vdots \ x_{n1} &amp; \cdots &amp; x_{np} \ \end{matrix}\right]$, label vector $y = (y_1, y_2, …, y_n)^T$ ($y$ should be a $0-1$ vector), test instance $x$.</p>
+
+<p>Output: the class where $x$ belongs to.</p>
+
+<p>Step1: load $X$ and $y$, we <strong>don’t</strong> need to add the “1”s.</p>
+
+<p>Step2: seperate $X$ into $X_1$ and $X_2$ by the value of $y$.</p>
+
+<p>Step3: compute $\bar{X_1}$, $\bar{X_2}$ and $S_w$. let $\hat{\beta} = S_w^{-1}(\bar{X_1} - \bar{X_2})$, so the model we trained is $y = X \hat{\beta} - 0.5$.</p>
+
+<p>Step3: when classifying the test instance $x$, add a “1” in the front of it, and calculate $\hat{y} = x^T \hat{\beta} - \hat{\beta}^T \frac{\bar{X_1} + \bar{X_2}}{2}$. If $\hat{y} = 0$, $x$ cannot be classified, print “Cannot be classified.”; otherwise, let $class = \begin{cases} Positive &amp; \hat{y} \gt 0 \ Negative &amp; \hat{y} \lt 0 \end{cases}$.</p>
+
+<h3 id="3-code-1">(3) Code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LDA</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+               
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X_1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,:]</span><span class="c1"># This would seperate X into X_1 and X_2
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">X_2</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,:]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">X_1_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="c1"># X.mean(axis = 0) is the action of calculating \bar{X}
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">X_2_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        
+        <span class="n">S_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">S_2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">S_1</span> <span class="o">=</span> <span class="n">S_1</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">outer</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_1_bar</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_1</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_1_bar</span><span class="p">)</span>
+            <span class="c1"># np.outer() computes the matrix product of two vectors (e.g. when a 2*1 vector multiplies a 1*3 vector, we should get a 2*3 matrix)
+</span>            <span class="c1"># .dot() is the inner product, we could only get a number if when a 2*1 vector dots a 1*3 vector
+</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">S_2</span> <span class="o">=</span> <span class="n">S_2</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">outer</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2_bar</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2_bar</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="p">.</span><span class="n">S_w</span> <span class="o">=</span> <span class="n">S_1</span> <span class="o">+</span> <span class="n">S_2</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">det</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">S_w</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span><span class="c1">#S_w is non-invertible, let S_w = S_w + 0.1I
+</span>            <span class="k">print</span><span class="p">(</span><span class="s">"S_w is singular, we'll use an approximation of S_w instead"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">S_w</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">S_w</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">identity</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">S_w</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">S_w</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_1_bar</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2_bar</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_new</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">X_new</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">)</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">X_1_bar</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">X_2_bar</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">threshold</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Cannot be classified."</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">y_hat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="k">else</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">c</span>
+</code></pre></div></div>
+
+<p>We’ll train a lda model <code class="language-plaintext highlighter-rouge">lda</code> using the following training set $S = {(X,y)}$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">lda</span><span class="p">.</span><span class="n">train</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We can get the parameter vector $\hat{\beta}$ by calling <code class="language-plaintext highlighter-rouge">lda.beta_hat</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lda</span><span class="p">.</span><span class="n">beta_hat</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-0.4269103 , -0.19601329])
+</code></pre></div></div>
+
+<p>We can get the Sums of Squares Within Groups $S_w$ by calling <code class="language-plaintext highlighter-rouge">lda.S_w</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lda</span><span class="p">.</span><span class="n">S_w</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[13.2, -1.2],
+       [-1.2, 22. ]])
+</code></pre></div></div>
+
+<p>We have a new data set $X_{new}$, let’s see its predictions using our regression model by calling <code class="language-plaintext highlighter-rouge">lc.fit(X_new)</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">80</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X_new</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">lda</span><span class="p">.</span><span class="n">beta_hat</span><span class="p">))</span>
+<span class="n">lda</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -1.90365449  -1.24584718  -8.18936877 -58.37209302]
+
+
+
+
+
+array([1., 1., 0., 0.])
+</code></pre></div></div>
+
+<h2 id="references">References:</h2>
+
+<p>1.机器学习 - 周志华</p>
+
+<p>2.Hands-on Machine Learning with Scikit-Learn, Keras &amp; TensorFlow, 2nd Edition - Aurélien Géron</p>
+
+<p>3.Mathematical Statistics and Data Analysis - John A. Rice</p>
+
+<p>4.Linear Regression - Wikipedia</p>
+
+<p>5.Lasso Regression - Wikipedia</p>
+
+<p>6.Logistic Regression - Wikipedia</p>
+
+<p>7.Linear Discriminant Analysis - Wikipedia</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Rymoon/rymoon.github.io">rymoon.github.io</a> is maintained by <a href="https://github.com/Rymoon">Rymoon</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+    <nav>
+  
+    <a href="/" >Home</a>
+  
+    <a href="/about.html" >About</a>
+  
+    <a href="/blog.html" >Blog</a>
+  
+    <a href="/staff.html" >Staff</a>
+  
+</nav>
+  </body>
+</html>
