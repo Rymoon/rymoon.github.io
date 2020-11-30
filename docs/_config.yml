@@ -7,7 +7,6 @@ excerpt_separator:  '<!-- more -->'
 # Build settings
 plugins: 
   - jekyll-feed
-
 kramdown:
   math_engine: nil
 
