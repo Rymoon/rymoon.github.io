@@ -1,8 +1,8 @@
 ---
 short_name: rym
-name: 任雨濛
-position: Admin, Writer
+name: rymoon
+position: Admin
 ---
-助教，网站维护
+不想学数学的小说家，不是好程序员。
 
 rymoon42@outlook.com
