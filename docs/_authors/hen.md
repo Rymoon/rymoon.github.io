@@ -6,4 +6,5 @@ position: Bro
 
 五十块的好兄弟。
 
-<a href = "archerahenius.cn">archerahenius.cn</a>
+
+<a href = "http://www.archerahenius.cn">www.archerahenius.cn</a>
