@@ -3,9 +3,9 @@ author: rym
 catagory: blog
 ---
 
-# GDrive: Term of Service
+# MyGDrive: Term of Service
 
-> This is the Term of Service of GDrive
+> This is the Term of Service of MyGDrive
 <!-- more -->
 
 ## Term of Service
