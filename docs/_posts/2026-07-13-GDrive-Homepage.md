@@ -15,6 +15,6 @@ GDrive is an app for uploading files. All rights reserved by the author of the a
 No User data is required. Only to upload files.
 
 ## Privacy Policy
-[Privacy Plolicy Link]()
+[Privacy Plolicy Link](https://rymoon.github.io/2026/07/13/GDrive_Privacy_Policy.html)
 
     
