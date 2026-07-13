@@ -3,9 +3,9 @@ author: rym
 catagory: blog
 ---
 
-# Privacy Policy of GDrive
+# Privacy Policy of MyGDrive
 
-> This is the Privacy Policy of GDrive
+> This is the Privacy Policy of MyGDrive
 <!-- more -->
 
 ## Privacy Policy
